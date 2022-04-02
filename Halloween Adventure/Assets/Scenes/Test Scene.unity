@@ -287,7 +287,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1211585971}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -774,8 +774,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1682477069}
   choicePrefab: {fileID: 3102500559854669817, guid: f77c89383fd59cd47a1921c9684d4122, type: 3}
   continuePrefab: {fileID: 1866314433}
-  buttonContainerChoices: {fileID: 1188281744}
-  buttonContainerContinue: {fileID: 1866314432}
+  buttonContainerChoices: {fileID: 1348354405}
+  buttonContainerContinue: {fileID: 1348354405}
 --- !u!65 &501164287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1449,6 +1449,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 2266105046447821124, guid: c9b16371c02214645ab372260e82fdd7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266105046447821124, guid: c9b16371c02214645ab372260e82fdd7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1361.177
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266105046447821124, guid: c9b16371c02214645ab372260e82fdd7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266105046447821124, guid: c9b16371c02214645ab372260e82fdd7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20.624023
+      objectReference: {fileID: 0}
     - target: {fileID: 6833806855921797082, guid: c9b16371c02214645ab372260e82fdd7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1590,7 +1606,7 @@ RectTransform:
   m_Children:
   - {fileID: 151461131}
   m_Father: {fileID: 1211585971}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1666,6 +1682,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1348354405}
   - {fileID: 216682562}
   - {fileID: 1682477068}
   - {fileID: 1188281744}
@@ -2105,6 +2122,41 @@ Transform:
   m_Father: {fileID: 1288991548}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1348354404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1348354405}
+  m_Layer: 5
+  m_Name: post 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1348354405
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348354404}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1211585971}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.7801, y: 339.9696}
+  m_SizeDelta: {x: 609.41, y: 330.2496}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1432930269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,7 +2217,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1211585971}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -2432,6 +2484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573f5071fe5134b4d875e98e7a137da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1211585975}
   dialogue: {fileID: 11400000, guid: a454c2ee828f01f49adecf7da78b1cab, type: 2}
   dialogueParser: {fileID: 501164286}
 --- !u!114 &1865090818
@@ -2560,7 +2613,7 @@ RectTransform:
   m_Children:
   - {fileID: 897538770}
   m_Father: {fileID: 1211585971}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -2611,13 +2664,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1211585972}
-        m_TargetAssemblyTypeName: DialogManager, Assembly-CSharp
-        m_MethodName: NextMessage
+      - m_Target: {fileID: 501164285}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
