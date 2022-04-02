@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: try
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 060a2689-fedf-4d6c-be77-9bba3f492245
+    PortName: Next
+    TargetNodeGUID: 0c10f414-8fcf-4084-9cea-1d40d191e0d5
+  - BaseNodeGUID: 0c10f414-8fcf-4084-9cea-1d40d191e0d5
+    PortName: mu bien
+    TargetNodeGUID: b53fd6b2-8fae-4ff9-ac52-a2c07b7e5a65
+  - BaseNodeGUID: b53fd6b2-8fae-4ff9-ac52-a2c07b7e5a65
+    PortName: pos ok
+    TargetNodeGUID: 615bacfe-8ec7-48b9-ae8d-55e19c620563
+  DialogueNodeData:
+  - NodeGUID: 0c10f414-8fcf-4084-9cea-1d40d191e0d5
+    DialogueText: Hola soy texto de abajo
+    Position: {x: 322, y: 106}
+  - NodeGUID: b53fd6b2-8fae-4ff9-ac52-a2c07b7e5a65
+    DialogueText: pos eso
+    Position: {x: 651, y: 106}
+  - NodeGUID: 615bacfe-8ec7-48b9-ae8d-55e19c620563
+    DialogueText: chao
+    Position: {x: 651, y: 292}
+  ExposedProperties: []
+  CommentBlockData:
+  - ChildNodes:
+    - 0c10f414-8fcf-4084-9cea-1d40d191e0d5
+    Position: {x: 297, y: 47}
+    Title: Algo
