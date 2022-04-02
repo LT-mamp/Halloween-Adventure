@@ -6,6 +6,8 @@ using System.Linq;
 
 public class DialogTrigger : MonoBehaviour
 {
+    public Animator animator;
+    
     [SerializeField] private DialogueContainer dialogue;
     [SerializeField] private DialogueParser dialogueParser;
     //public Actor[] actors;
@@ -13,6 +15,7 @@ public class DialogTrigger : MonoBehaviour
     public void StartDialog(){
         //FindObjectOfType<DialogManager>().OpenDialog(messages, actors);
         dialogueParser.ProceedToNarrative(dialogue.NodeLinks.First().TargetNodeGUID, dialogue);
+        animator.SetBool("isStarted", true);
     }
 }
 

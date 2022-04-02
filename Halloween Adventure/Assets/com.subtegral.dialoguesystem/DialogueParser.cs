@@ -33,20 +33,21 @@ using Subtegral.DialogueSystem.DataContainers;
             var buttons = buttonContainerChoices.GetComponentsInChildren<Button>();
             var buttons2 = buttonContainerContinue.GetComponentsInChildren<Button>();
 
-            /*for (int i = 0; i < buttons.Length; i++)
+            for (int i = 0; i < buttons.Length; i++)
             {
                 Destroy(buttons[i].gameObject);
             }
             for (int i = 0; i < buttons2.Length; i++)
             {
                 Destroy(buttons2[i].gameObject);
-            }*/
+            }
 
             if(choices.ToArray().Count() <= 1 ){
                 //no hay opciones, mostrar el botón next
                 foreach (var choice in choices){
                     var button = Instantiate(continuePrefab, buttonContainerContinue);
                     //button.GetComponentInChildren<Text>().text = ProcessProperties(choice.PortName);
+                    Debug.Log("on click?");
                     button.onClick.AddListener(() => ProceedToNarrative(choice.TargetNodeGUID, dialogue));
                 }
             }
