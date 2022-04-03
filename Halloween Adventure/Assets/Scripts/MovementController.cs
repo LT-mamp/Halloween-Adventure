@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MovementController : MonoBehaviour
+public class MovementController : MonoBehaviour, IDataPersistance
 {
+    //saving data test
+    public int marsPoints = 0;
     //variables públicas
     public float moveSpeed = 3; 
-    public GameObject world;
 
     //Input
     PlayerInput playerInput;
@@ -22,7 +23,17 @@ public class MovementController : MonoBehaviour
     float groundedGravity = -0.05f;
     float gravity = -9.8f;
 
+    //variables para jump
+    [Header("Jump")]
+    bool isJumpPressed = false;
+    [SerializeField] float initialJumpVelocity;
+    [SerializeField] float maxJumpHeight = 0.5f;
+    [SerializeField] float maxJumpTime = .5f;
+    bool isJumping = false;
+
     //m1 rotar espacio
+    [Header("Rotate")]
+    public GameObject world;
     bool isRotatingPressed = false;
     bool isRotating = false;
     public bool isLookingToZ = true;
@@ -30,28 +41,25 @@ public class MovementController : MonoBehaviour
     Quaternion maxRotation = new Quaternion (0, 0, 0, 1);
     Quaternion minRotation = new Quaternion (0, 0, 0, 1);
 
-    //variables para jump
-    bool isJumpPressed = false;
-    [SerializeField] float initialJumpVelocity;
-    [SerializeField] float maxJumpHeight = 0.5f;
-    [SerializeField] float maxJumpTime = .5f;
-    bool isJumping = false;
-
     //witch and other
+    [Header("Creation")]
     bool isCreatePlatformPressed = false;
     [SerializeField] Transform originOfObject;
     [SerializeField] GameObject objectPrefab;
     bool creationActivated = false;
     GameObject createdObject = null;
 
+    [Header("Invert")]
     bool isInvertGravityPressed = false;
     bool isInverted = false;
 
+    [Header("Swing")]
     bool isSwingPressed = false;
     bool swingActive = false;
     Transform swingPosition;
     bool isSwinging = false;
 
+    [Header("Push")]
     bool isPushPressed = false;
     bool pushEnabled = false;
     [SerializeField]
@@ -239,12 +247,20 @@ public class MovementController : MonoBehaviour
             //Debug.Log("initial=" + initialJumpVelocity + " current=" + currentMovement.y);
             currentMovement.y = jumpVel; //* Time.deltaTime;
             //Debug.Log("result = " + currentMovement.y);
+
+            //saving data test
+            marsPoints += 1;
+
         }else if(!isJumpPressed && isJumping && grounded){
             isJumping = false;
         }
     }
 
     void rotateWorld(){
+
+        //saving data test
+        Debug.Log("Actual points = " + marsPoints);
+
         Quaternion actualRotation = world.transform.rotation;
         if(isLookingToZ){
             if(world.transform.rotation.y <= maxRotation.y){
@@ -345,6 +361,16 @@ public class MovementController : MonoBehaviour
     private void OnDisable() {
         playerInput.CharacterControls.Disable();
     }
+
+    public void LoadData(GameData data){
+        this.marsPoints = data.marsPoints;
+    }
+
+    public void SaveData(ref GameData data){
+        data.marsPoints = this.marsPoints;
+    }
+
+
 }
 
 
