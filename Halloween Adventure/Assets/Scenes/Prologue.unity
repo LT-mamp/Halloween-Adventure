@@ -431,7 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 880312184}
   manager: {fileID: 1388080625}
-  dialogJSON: {fileID: 4900000, guid: e2f3df2170e3f6846941962045c647a4, type: 3}
+  dialogJSON: {fileID: 4900000, guid: c842c47a640b96f4191bb2afe1d9ae2e, type: 3}
 --- !u!1 &879600080
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +514,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2129122569}
     m_Modifications:
+    - target: {fileID: 1284808411951974510, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808411951974512, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.20754719
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808411951974512, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.20754719
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808411951974512, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.20754719
+      objectReference: {fileID: 0}
     - target: {fileID: 1284808411974738002, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -602,6 +618,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialog box
       objectReference: {fileID: 0}
+    - target: {fileID: 1284808411974738004, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808411974738004, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808411974738004, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1284808412111647876, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -634,6 +662,39 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1284808412446582252, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_text
+      value: Paste in some example text to see how it will look like... What do you
+        think? Pretty cool, huh? Yeah, I thought so.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808412446582252, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808412446582252, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808412446582252, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808412446582252, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808412446582253, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -222.8701
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808412446582253, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 121.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808412446582253, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.9315796
+      objectReference: {fileID: 0}
     - target: {fileID: 1284808412629747488, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -653,6 +714,14 @@ PrefabInstance:
     - target: {fileID: 1284808412629747550, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808413062129899, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284808413127976352, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a65b0d1c6e6457a49b7840080a2a7b8c, type: 3}

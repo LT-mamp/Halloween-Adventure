@@ -24,6 +24,10 @@ public class DialogManager1 : MonoBehaviour
     bool isPlaying;
     bool allTyped;
 
+    private const string Actor_Name = "Name";
+    private const string Actor_Image = "Image";
+    private const string Sound_To_Play = "Sound";
+
 
     private void Awake() {
         if (instance != null){
@@ -63,11 +67,14 @@ public class DialogManager1 : MonoBehaviour
     }
 
     void DisplayMessage(){
-        //Message messageToDisplay = currentMessages[activeMessage];
+        
         messageText.text = "";
         allTyped = false;
-        //messageText.text = messageToDisplay.message;
+        
         StartCoroutine(TypeMessage(currentStory.Continue()));
+
+        //tags
+        HandleTags(currentStory.currentTags);
 
         //Actor actorToDisplay = currentActors[messageToDisplay.actorID];
         //actorName.text = actorToDisplay.name;
@@ -82,6 +89,52 @@ public class DialogManager1 : MonoBehaviour
             yield return new WaitForSeconds(textSpeed);
         }
         allTyped = true;
+    }
+
+    void HandleTags(List<string> currentTags){
+        foreach (string tag in currentTags)
+        {
+            //parse the tag
+            string[] splitTag = tag.Split(':');
+
+            if(splitTag.Length != 2){
+                Debug.LogError("La tag no se ha podido leer correctamente. Tag: " + tag);
+            }
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            switch (tagKey)
+            {
+                case Actor_Name:
+                    //Debug.Log("name=" + tagValue);
+                    if(tagValue == "None"){
+                        actorName.enabled = false;
+                    }else{
+                        actorName.enabled = true;
+                        actorName.text = tagValue;
+                    }
+                    break;
+                case Actor_Image:
+                    //Debug.Log("image=" + tagValue);
+                    if(tagValue == "None"){
+                        actorImage.enabled = false;
+                    }else{
+                        //actorImage.sprite = tagValue;
+                    }
+                    break;
+                case Sound_To_Play:
+                    Debug.Log("name=" + tagValue);
+                    /*if(tagValue == "None"){
+                        actorName.enabled = false;
+                    }else{
+                        actorName.text = tagValue;
+                    }*/
+                    break;
+                default:
+                    Debug.LogWarning("La tag no es válidad: " + tag);
+                    break;
+            }
+        }
     }
 
     public void NextMessage(){
@@ -99,5 +152,8 @@ public class DialogManager1 : MonoBehaviour
         isPlaying = false;
         messageText.text = "";
     }
+
+    //si el texto se corresponde con un comando, hacer un switch y llamar a la función correspondiente.
+    //arreglar el bug de hacer click muy rápido y se bugea el texto
 
 }
