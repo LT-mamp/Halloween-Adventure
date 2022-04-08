@@ -7,15 +7,26 @@ using System.Linq;
 public class DialogTrigger : MonoBehaviour
 {
     public Animator animator;
-    
+
+    [Header("Test inky")]
+    [SerializeField] private DialogManager1 manager;
+    [SerializeField] private TextAsset dialogJSON;
+
+    /*[Header("Test nodos")]
     [SerializeField] private DialogueContainer dialogue;
-    [SerializeField] private DialogueParser dialogueParser;
+    [SerializeField] private DialogueParser dialogueParser;*/
     //public Actor[] actors;
 
     public void StartDialog(){
         //FindObjectOfType<DialogManager>().OpenDialog(messages, actors);
-        dialogueParser.ProceedToNarrative(dialogue.NodeLinks.First().TargetNodeGUID, dialogue);
-        animator.SetBool("isStarted", true);
+        //dialogueParser.ProceedToNarrative(dialogue.NodeLinks.First().TargetNodeGUID, dialogue);
+        //animator.SetBool("isStarted", true);
+        manager.OpenDialog(dialogJSON);
+    }
+
+    public void StartDialog(Message[] messages, Actor[] actors){
+        
+        FindObjectOfType<DialogManager>().OpenDialog(messages, actors);
     }
 }
 

@@ -26,6 +26,8 @@ using Subtegral.DialogueSystem.DataContainers;
 
         public void ProceedToNarrative(string narrativeDataGUID, DialogueContainer dialogue)
         {
+            if(dialogue == null) Debug.LogWarning(dialogue);
+            Debug.Log("hey there");
             var text = dialogue.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).DialogueText;
             dialogueText.text = ProcessProperties(text, dialogue);
 
@@ -47,7 +49,7 @@ using Subtegral.DialogueSystem.DataContainers;
                 foreach (var choice in choices){
                     var button = Instantiate(continuePrefab, buttonContainerContinue);
                     //button.GetComponentInChildren<Text>().text = ProcessProperties(choice.PortName);
-                    Debug.Log("on click?");
+                    //Debug.Log("on click?");
                     button.onClick.AddListener(() => ProceedToNarrative(choice.TargetNodeGUID, dialogue));
                 }
             }
