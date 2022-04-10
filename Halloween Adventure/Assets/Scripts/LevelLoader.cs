@@ -8,8 +8,7 @@ public class LevelLoader : MonoBehaviour
     public int index = 0;
     public Animator transition;
     public float transitionTime = 1f;
-
-    // Update is called once per frame
+    
     void Start()
     {
         if (index == 0){

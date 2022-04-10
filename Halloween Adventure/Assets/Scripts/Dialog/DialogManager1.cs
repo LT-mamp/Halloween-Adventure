@@ -19,10 +19,15 @@ public class DialogManager1 : MonoBehaviour
     public Animator animator;
     public float textSpeed = 0.05f;
 
+    [Header("Game Manager")]
+    [SerializeField] GameManager gm;
+
     //[Header("Story")]
     Story currentStory;
     bool isPlaying;
     bool allTyped;
+    string messageToDisplay;
+    Coroutine typeMessage;
 
     private const string Actor_Name = "Name";
     private const string Actor_Image = "Image";
@@ -38,13 +43,13 @@ public class DialogManager1 : MonoBehaviour
     
     private void Start() {
         isPlaying = false;
-        //animator.SetBool("isStarted", true);
+        allTyped = true;
     }
 
     private void Update() {
-        if(!isPlaying){
+        /*if(!isPlaying){
             return;
-        }
+        }*/
         
         //continue to next line if continue is pressed
         // that means call nextMessage()
@@ -62,29 +67,34 @@ public class DialogManager1 : MonoBehaviour
         }
         else{
             CloseDialog();
+            Debug.LogWarning("Intentando iniciar un diálgo con una historia vacía");
         }
         
     }
 
     void DisplayMessage(){
+        if(!allTyped){
+            StopCoroutine(typeMessage);
+            messageText.text = messageToDisplay;
+            allTyped = true;
+        }else{
+            messageText.text = "";
+            allTyped = false;
+
+            messageToDisplay = currentStory.Continue();
         
-        messageText.text = "";
-        allTyped = false;
-        
-        StartCoroutine(TypeMessage(currentStory.Continue()));
+            typeMessage = StartCoroutine(TypeMessage(messageToDisplay));
 
-        //tags
-        HandleTags(currentStory.currentTags);
-
-        //Actor actorToDisplay = currentActors[messageToDisplay.actorID];
-        //actorName.text = actorToDisplay.name;
-        //actorImage.sprite = actorToDisplay.sprite;
-
+            //tags
+            HandleTags(currentStory.currentTags);
+        }
     }
 
     IEnumerator TypeMessage(string message){
-        messageText.text = "";
         foreach(char letter in message.ToCharArray()){
+            if(allTyped){
+                Debug.LogWarning("Still typing but shouldn't");
+            }
             messageText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
@@ -138,9 +148,15 @@ public class DialogManager1 : MonoBehaviour
     }
 
     public void NextMessage(){
+        /*if(!allTyped){
+            StopCoroutine("TypeMessage");
+            messageText.text = "";
+            messageText.text = messageToDisplay;
+            allTyped = true;
+        }*/
         if(currentStory.canContinue){
             DisplayMessage();
-            animator.SetBool("isStarted", true);
+            //animator.SetBool("isStarted", true);
         }
         else{
             CloseDialog();
