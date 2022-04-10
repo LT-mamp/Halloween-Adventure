@@ -9,9 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ad69ef7c8d58d6f43855b8ef03d3dc32
   - enabled: 1
-    path: Assets/Scenes/Prologue.unity
+    path: Assets/Scenes/BaseLine/1_Prologue.unity
     guid: c36215fb62a88d343a7b7ffcb74daeb7
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
+    path: Assets/Scenes/BaseLine/2_Tutorial.unity
     guid: 8d6edfff3654cc04d887c4b5b0bae028
+  - enabled: 1
+    path: Assets/Scenes/BaseLine/3_Chapter1.unity
+    guid: ccdeca12c99818f49a56e13fe2c33cc8
+  - enabled: 1
+    path: Assets/Scenes/BaseLine/4_Platform1.unity
+    guid: f977a88e8cb8fa24ea7275b6fe9cbabb
+  - enabled: 1
+    path: Assets/Scenes/BaseLine/5_Chapter2.unity
+    guid: ce29f818a072357429329bb0ed04310c
+  - enabled: 1
+    path: Assets/Scenes/Ending_Alfa.unity
+    guid: e55bc23a5964cf549ae2b3678cca1b8c
   m_configObjects: {}

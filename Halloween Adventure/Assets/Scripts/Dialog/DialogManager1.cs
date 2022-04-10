@@ -141,22 +141,15 @@ public class DialogManager1 : MonoBehaviour
                     }*/
                     break;
                 default:
-                    Debug.LogWarning("La tag no es válidad: " + tag);
+                    Debug.LogWarning("Tag no válidad: " + tag);
                     break;
             }
         }
     }
 
     public void NextMessage(){
-        /*if(!allTyped){
-            StopCoroutine("TypeMessage");
-            messageText.text = "";
-            messageText.text = messageToDisplay;
-            allTyped = true;
-        }*/
         if(currentStory.canContinue){
             DisplayMessage();
-            //animator.SetBool("isStarted", true);
         }
         else{
             CloseDialog();
@@ -164,9 +157,15 @@ public class DialogManager1 : MonoBehaviour
     }
 
     void CloseDialog(){
+        Debug.Log("End of story");
+
         animator.SetBool("isStarted", false);
         isPlaying = false;
         messageText.text = "";
+
+        //gm.SetNextLevelIndex(-1);
+
+        gm.levelLoader.LoadNextLevel();
     }
 
     //si el texto se corresponde con un comando, hacer un switch y llamar a la función correspondiente.

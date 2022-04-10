@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public int index = 0;
+    public int levelIndex = -1;
     public Animator transition;
     public float transitionTime = 1f;
     
     void Start()
     {
-        if (index == 0){
-            index = SceneManager.GetActiveScene().buildIndex + 1;
+        if (levelIndex == -1){
+            levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
         }
     }
 
@@ -25,7 +25,7 @@ public class LevelLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene(levelIndex);
     }
 
     public void QuitGame(){
