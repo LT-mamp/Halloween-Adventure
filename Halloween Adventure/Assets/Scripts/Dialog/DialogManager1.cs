@@ -24,7 +24,7 @@ public class DialogManager1 : MonoBehaviour
 
     //[Header("Story")]
     Story currentStory;
-    bool isPlaying;
+    //bool isPlaying;
     bool allTyped;
     string messageToDisplay;
     Coroutine typeMessage;
@@ -42,7 +42,7 @@ public class DialogManager1 : MonoBehaviour
     }
     
     private void Start() {
-        isPlaying = false;
+        //isPlaying = false;
         allTyped = true;
     }
 
@@ -57,7 +57,7 @@ public class DialogManager1 : MonoBehaviour
 
     public void OpenDialog(TextAsset inkJSON){
         currentStory = new Story(inkJSON.text);
-        isPlaying = true;
+        //isPlaying = true;
 
 
         Debug.Log("Inicio de conversación.");
@@ -160,7 +160,7 @@ public class DialogManager1 : MonoBehaviour
         Debug.Log("End of story");
 
         animator.SetBool("isStarted", false);
-        isPlaying = false;
+        //isPlaying = false;
         messageText.text = "";
 
         //gm.SetNextLevelIndex(-1);

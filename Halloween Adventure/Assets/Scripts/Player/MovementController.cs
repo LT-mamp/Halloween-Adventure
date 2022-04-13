@@ -7,17 +7,25 @@ public class MovementController : MonoBehaviour, IDataPersistance
 {
     //saving data test
     public int marsPoints = 0;
-    //variables públicas
+
+    [Header("Player")]
     public float moveSpeed = 3; 
+    public Transform startPoint;
+
+    [Header("Stuff")]
+    [SerializeField] Transform groundPoint;
+    [SerializeField] LayerMask ground;
 
     //Input
-    PlayerInput playerInput;
-    CharacterController characterController;
+    //PlayerInput playerInput;
+    //CharacterController characterController;
 
     Vector2 currentMovementInput;
     Vector3 currentMovement;
     bool isMovementPressed;
     float direction = 0;
+
+    Rigidbody2D rb;
 
     //Gravity
     float groundedGravity = -0.05f;
@@ -67,53 +75,30 @@ public class MovementController : MonoBehaviour, IDataPersistance
     float count = 10f;
 
     private void Awake() {
-        playerInput = new PlayerInput();
-        characterController = GetComponent<CharacterController>();
-
-        //Input callbacks
-        playerInput.CharacterControls.Move.started += onMovementInput;
-        playerInput.CharacterControls.Move.performed += onMovementInput;
-        playerInput.CharacterControls.Move.canceled += onMovementInput;
-
-        playerInput.CharacterControls.Jump.started += onJump;
-        playerInput.CharacterControls.Jump.canceled += onJump;
-
-        playerInput.CharacterControls.RotateWorld.started += onRotateWorld;
-        playerInput.CharacterControls.RotateWorld.canceled += onRotateWorld;
-
-        playerInput.CharacterControls.CreatePlatform.started += onCreatePlatform;
-        playerInput.CharacterControls.CreatePlatform.canceled += onCreatePlatform;
-
-        playerInput.CharacterControls.InvertGravity.started += onInvertGravity;
-        playerInput.CharacterControls.InvertGravity.canceled += onInvertGravity;
-
-        playerInput.CharacterControls.Swing.started += onSwing;
-        playerInput.CharacterControls.Swing.canceled += onSwing;
-
-        playerInput.CharacterControls.Push.started += onPush;
-        playerInput.CharacterControls.Push.canceled += onPush;
+        rb = GetComponent<Rigidbody2D>();
 
         setUpJumpVariables();
     }
 
-    void onMovementInput(InputAction.CallbackContext context){
+    public void onMovementInput(InputAction.CallbackContext context){
         currentMovementInput = context.ReadValue<Vector2>();
         currentMovement.x = currentMovementInput.x;
         currentMovement.z = currentMovementInput.y;
         isMovementPressed = currentMovement.x != 0 || currentMovement.y != 0;
+        Debug.Log("Input x = " + currentMovement.x);
     }
 
-    void onJump(InputAction.CallbackContext context){
+    public void onJump(InputAction.CallbackContext context){
         isJumpPressed = context.ReadValueAsButton();
         //Debug.Log("JUMP= " + isJumpPressed);
     }
     
-    void onRotateWorld(InputAction.CallbackContext context){
+    public void onRotateWorld(InputAction.CallbackContext context){
         isRotatingPressed = context.ReadValueAsButton(); 
-        //Debug.Log("ROTAR = " + isRotatingPressed);
+        Debug.Log("ROTANDO");
     }
 
-    void onCreatePlatform(InputAction.CallbackContext context){
+    public void onCreatePlatform(InputAction.CallbackContext context){
         isCreatePlatformPressed = context.ReadValueAsButton();
         //Debug.Log("MAGIC = " + isCreatePlatformPressed);
         if(isCreatePlatformPressed){
@@ -121,19 +106,19 @@ public class MovementController : MonoBehaviour, IDataPersistance
         }
     }
 
-    void onInvertGravity(InputAction.CallbackContext context){
+    public void onInvertGravity(InputAction.CallbackContext context){
         isInvertGravityPressed = context.ReadValueAsButton();
         if(isInvertGravityPressed){
             invertGravity();
         }
     }
 
-    void onSwing(InputAction.CallbackContext context){
+    public void onSwing(InputAction.CallbackContext context){
         isSwingPressed = context.ReadValueAsButton();
         //Debug.Log("SWING = " + isSwingPressed);
     }
 
-    void onPush(InputAction.CallbackContext context){
+    public void onPush(InputAction.CallbackContext context){
         isPushPressed = context.ReadValueAsButton();
         //Debug.Log("PUSHING = " + isPushPressed);
     }
@@ -148,6 +133,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     void Start()
     {
         maxRotation *= Quaternion.Euler(0, 90, 0);
+        this.transform.position = startPoint.position;
     }
 
     // Update is called once per frame
@@ -185,8 +171,9 @@ public class MovementController : MonoBehaviour, IDataPersistance
     void applyGravity(){
         bool isFalling = currentMovement.y <= 0.0f || !isJumpPressed;
         float fallMultiplier = 2.5f;
-        if(characterController.isGrounded){
+        if(Physics2D.OverlapCircle(groundPoint.position, .1f, ground) && rb.velocity.y <= 0){
             currentMovement.y = groundedGravity;
+            //Debug.Log("isGrounded");
         }else if(isFalling){
             float previousYVelocity = currentMovement.y;
             float newYVelocity = previousYVelocity + (gravity * fallMultiplier * Time.deltaTime);
@@ -199,6 +186,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
             currentMovement.y = nextYVelocity;
             //Debug.Log("prev=" + previousYVelocity + " new=" + newYVelocity + " next=" + nextYVelocity + " result=" + currentMovement.y);
         }
+        
     }
 
     void moveCharacter(){
@@ -210,7 +198,15 @@ public class MovementController : MonoBehaviour, IDataPersistance
             newMovement.y = currentMovement.y;
         }
 
-        if(isLookingToZ){
+        newMovement.x = currentMovement.x * moveSpeed;
+        if(newMovement.x > currentMovement.x){
+            direction = 1;
+        }
+        else{
+            direction = -1;
+        }
+
+        /*if(isLookingToZ){
             newMovement.x = currentMovement.x * moveSpeed;
             if(newMovement.x > currentMovement.x){
                 direction = 1;
@@ -226,21 +222,23 @@ public class MovementController : MonoBehaviour, IDataPersistance
             else{
                 direction = -1;
             }
-        }
+        }*/
         
-        characterController.Move(newMovement * Time.deltaTime);
+        //characterController.Move(newMovement * Time.deltaTime);
+        rb.velocity = new Vector2(newMovement.x, newMovement.y);
+        //Debug.Log(rb.velocity);
     }
 
     void jump(){
-        bool grounded = true;
+        bool grounded = Physics2D.OverlapCircle(groundPoint.position, .1f, ground);
         float jumpVel = 0f;
         if(!isInverted){
-            grounded = characterController.isGrounded;
+            //grounded = characterController.isGrounded;
             jumpVel = initialJumpVelocity;
         }
         else{
             grounded = true;
-            jumpVel = -initialJumpVelocity;
+            //jumpVel = -initialJumpVelocity;
         }
         if(!isJumping && grounded && isJumpPressed){
             isJumping = true;
@@ -281,9 +279,12 @@ public class MovementController : MonoBehaviour, IDataPersistance
                 isLookingToZ = true;
             }
         }
-        characterController.enabled = false;
+        //characterController.enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         world.transform.rotation = actualRotation;
-        characterController.enabled = true;
+        //characterController.enabled = true;
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         
     }
 
@@ -337,9 +338,14 @@ public class MovementController : MonoBehaviour, IDataPersistance
     void swing(){
         Debug.Log("from: " + this.gameObject.transform.position + "  to: " + swingPosition.position);
         //characterController.Move(swingPosition.position);
-        characterController.enabled = false;
+
+        //characterController.enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         this.transform.position = swingPosition.position;
-        characterController.enabled = true;
+        //characterController.enabled = true;
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         isSwinging = false;
     }
     
@@ -355,12 +361,12 @@ public class MovementController : MonoBehaviour, IDataPersistance
         }
     }
 
-    private void OnEnable() {
+    /*private void OnEnable() {
         playerInput.CharacterControls.Enable();
     }
     private void OnDisable() {
         playerInput.CharacterControls.Disable();
-    }
+    }*/
 
     public void LoadData(GameData data){
         this.marsPoints = data.marsPoints;

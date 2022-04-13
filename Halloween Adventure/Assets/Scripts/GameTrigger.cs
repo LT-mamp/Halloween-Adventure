@@ -18,7 +18,7 @@ public class GameTrigger : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("Heya");
         if(other.gameObject.tag == "Player"){
             if(this.tag == "Finish"){
