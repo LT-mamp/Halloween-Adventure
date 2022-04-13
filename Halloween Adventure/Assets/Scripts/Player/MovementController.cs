@@ -6,15 +6,15 @@ using UnityEngine.InputSystem;
 public class MovementController : MonoBehaviour, IDataPersistance
 {
     //saving data test
+    [Header("Stuff")]
+    [SerializeField] LayerMask ground;
     public int marsPoints = 0;
+    public GameManager gm;
 
     [Header("Player")]
     public float moveSpeed = 3; 
     public Transform startPoint;
-
-    [Header("Stuff")]
     [SerializeField] Transform groundPoint;
-    [SerializeField] LayerMask ground;
 
     //Input
     //PlayerInput playerInput;
@@ -41,7 +41,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
 
     //m1 rotar espacio
     [Header("Rotate")]
-    public GameObject world;
+    
     bool isRotatingPressed = false;
     bool isRotating = false;
     public bool isLookingToZ = true;
@@ -49,19 +49,20 @@ public class MovementController : MonoBehaviour, IDataPersistance
     Quaternion maxRotation = new Quaternion (0, 0, 0, 1);
     Quaternion minRotation = new Quaternion (0, 0, 0, 1);
 
-    //witch and other
     [Header("Creation")]
     bool isCreatePlatformPressed = false;
-    [SerializeField] Transform originOfObject;
+    [SerializeField] Transform originOfCreation;
+    [SerializeField] Vector2 creationPoint;
     [SerializeField] GameObject objectPrefab;
     bool creationActivated = false;
+    int leftOrRight = 1;
     GameObject createdObject = null;
 
-    [Header("Invert")]
+    //[Header("Invert")]
     bool isInvertGravityPressed = false;
     bool isInverted = false;
 
-    [Header("Swing")]
+    //[Header("Swing")]
     bool isSwingPressed = false;
     bool swingActive = false;
     Transform swingPosition;
@@ -70,8 +71,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     [Header("Push")]
     bool isPushPressed = false;
     bool pushEnabled = false;
-    [SerializeField]
-    Pusheable[] pusheable;
+    [SerializeField] Pusheable[] pusheable;
     float count = 10f;
 
     private void Awake() {
@@ -86,6 +86,11 @@ public class MovementController : MonoBehaviour, IDataPersistance
         currentMovement.z = currentMovementInput.y;
         isMovementPressed = currentMovement.x != 0 || currentMovement.y != 0;
         Debug.Log("Input x = " + currentMovement.x);
+        if(currentMovement.x > 0){
+            leftOrRight = 1;
+        }else if(currentMovement.x < 0){
+            leftOrRight = -1;
+        }
     }
 
     public void onJump(InputAction.CallbackContext context){
@@ -143,6 +148,11 @@ public class MovementController : MonoBehaviour, IDataPersistance
 
         if(isRotatingPressed){
             isRotating = true;
+            if(isLookingToZ){
+                gm.ActivarElementosEnPlano(2);
+            }else{
+                gm.ActivarElementosEnPlano(1);
+            }
             rotateWorld();
         }else if(isRotating){
             rotateWorld();
@@ -205,24 +215,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
         else{
             direction = -1;
         }
-
-        /*if(isLookingToZ){
-            newMovement.x = currentMovement.x * moveSpeed;
-            if(newMovement.x > currentMovement.x){
-                direction = 1;
-            }
-            else{
-                direction = -1;
-            }
-        }else{
-            newMovement.z =  currentMovement.x * moveSpeed;
-            if(newMovement.z > currentMovement.z){
-                direction = 1;
-            }
-            else{
-                direction = -1;
-            }
-        }*/
         
         //characterController.Move(newMovement * Time.deltaTime);
         rb.velocity = new Vector2(newMovement.x, newMovement.y);
@@ -259,29 +251,31 @@ public class MovementController : MonoBehaviour, IDataPersistance
         //saving data test
         Debug.Log("Actual points = " + marsPoints);
 
-        Quaternion actualRotation = world.transform.rotation;
+        Quaternion actualRotation = gm.world.transform.rotation;
         if(isLookingToZ){
-            if(world.transform.rotation.y <= maxRotation.y){
+            if(gm.world.transform.rotation.y <= maxRotation.y){
                 actualRotation *= Quaternion.Euler(0, rotationSpeed * 10 * Time.deltaTime, 0);
             }
             else{
                 isRotating = false;
                 actualRotation = maxRotation;
                 isLookingToZ = false;
+                gm.DesactivarElementosEnPlano(1);
             }
         }else{
-            if(world.transform.rotation.y >= minRotation.y){
+            if(gm.world.transform.rotation.y >= minRotation.y){
                 actualRotation *= Quaternion.Euler(0, -1 * rotationSpeed * 10 * Time.deltaTime, 0);
             }
             else{
                 isRotating = false;
                 actualRotation = minRotation;
                 isLookingToZ = true;
+                gm.DesactivarElementosEnPlano(2);
             }
         }
         //characterController.enabled = false;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        world.transform.rotation = actualRotation;
+        gm.world.transform.rotation = actualRotation;
         //characterController.enabled = true;
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -289,12 +283,20 @@ public class MovementController : MonoBehaviour, IDataPersistance
     }
 
     void createPlatform(){
+        //Vector2 origin = new Vector2(originOfCreation.position.x, originOfCreation.position.y);
+        Vector2 origin = originOfCreation.position;
+        if(leftOrRight == -1){
+            origin.x -= 5;
+        }
+        //Vector2 origin = new Vector2(leftOrRight*creationPoint.x, creationPoint.y);
+        //Debug.Log("Crear plataforma en: " + origin);
+
         if(!creationActivated){
-            createdObject = Instantiate(objectPrefab, originOfObject.position, objectPrefab.transform.rotation);
+            createdObject = Instantiate(objectPrefab, origin, objectPrefab.transform.rotation, this.transform);
             creationActivated = true;
         }else{
             Destroy(createdObject, .5f);
-            createdObject = Instantiate(objectPrefab, originOfObject.position, objectPrefab.transform.rotation);
+            createdObject = Instantiate(objectPrefab, origin, objectPrefab.transform.rotation);
             creationActivated = true;
         }
     }

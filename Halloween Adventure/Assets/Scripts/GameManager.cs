@@ -7,10 +7,18 @@ public class GameManager : MonoBehaviour
 {
     [Header("LevelLoader")]
     public LevelLoader levelLoader;
+
+    [Header("World elements")]
+    public GameObject world;
+    //public bool isLookingToZ = true;
+
+    GameObject objetosEnPlanoX;
+    GameObject objetosEnPlanoZ;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //objetosEnPlanoX = null;
     }
 
     // Update is called once per frame
@@ -35,5 +43,49 @@ public class GameManager : MonoBehaviour
         }else{
             levelLoader.levelIndex = index;
         }
+    }
+
+    public void DesactivarElementosEnPlano(int plano){
+        if(plano == 1){
+            if(objetosEnPlanoX == null){
+                //guardar el hijo de allPlatforms con el nombre "X"
+                objetosEnPlanoX = getChildWithName("PlanoX", world);
+            }
+            objetosEnPlanoX.SetActive(false);
+        }else if(plano == 2){
+            if(objetosEnPlanoZ == null){
+                //guardar el hijo de allPlatforms con el nombre "X"
+                objetosEnPlanoZ = getChildWithName("PlanoZ", world);
+            }
+            objetosEnPlanoZ.SetActive(false);
+        }else{
+            Debug.LogWarning("El índice del plano a desactivar no es correcto. PlanoX = 1, planoZ = 2.");
+        }
+    }
+
+    public void ActivarElementosEnPlano(int plano){
+        if(plano == 1){
+            if(objetosEnPlanoX == null){
+                //guardar el hijo de allPlatforms con el nombre "X"
+                objetosEnPlanoX = getChildWithName("PlanoX", world);
+            }
+            objetosEnPlanoX.SetActive(true);
+        }else if(plano == 2){
+            if(objetosEnPlanoZ == null){
+                //guardar el hijo de allPlatforms con el nombre "X"
+                objetosEnPlanoZ = getChildWithName("PlanoZ", world);
+            }
+            objetosEnPlanoZ.SetActive(true);
+        }else{
+            Debug.LogWarning("El índice del plano a activar no es correcto. PlanoX = 1, planoZ = 2.");
+        }
+    }
+
+    GameObject getChildWithName(string childName, GameObject parent){
+        Transform child;
+        child = parent.transform.Find(childName);
+        if (child != null) return child.gameObject;
+        Debug.LogWarning("No se ha encontrado el objeto con el nombre \"" + childName + "\".");
+        return null;
     }
 }
