@@ -46,7 +46,7 @@ public class DataPersistanceManager : MonoBehaviour
         foreach (IDataPersistance dataPersistanceObj in dataPersistanceObjects){
             dataPersistanceObj.LoadData(gameData);
         }
-        Debug.Log("Loaded mars points: " + gameData.marsPoints);
+        //Debug.Log("Loaded mars points: " + gameData.marsPoints);
     }
 
     public void SaveGame(){

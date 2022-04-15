@@ -28,6 +28,7 @@ public class DialogManager1 : MonoBehaviour
     bool allTyped;
     string messageToDisplay;
     Coroutine typeMessage;
+    bool skiping = false;
 
     private const string Actor_Name = "Name";
     private const string Actor_Image = "Image";
@@ -152,7 +153,15 @@ public class DialogManager1 : MonoBehaviour
             DisplayMessage();
         }
         else{
+            skiping = false;
             CloseDialog();
+        }
+    }
+
+    public void SkipDialog(){
+        skiping = true;
+        while(skiping){
+            NextMessage();
         }
     }
 

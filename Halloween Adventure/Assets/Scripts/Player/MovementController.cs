@@ -77,6 +77,11 @@ public class MovementController : MonoBehaviour, IDataPersistance
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
 
+        for (int i = 0; i < gm.isMechanicActive.Length; i++)
+        {
+            gm.isMechanicActive[i] = false;
+        }
+
         setUpJumpVariables();
     }
 
@@ -85,7 +90,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
         currentMovement.x = currentMovementInput.x;
         currentMovement.z = currentMovementInput.y;
         isMovementPressed = currentMovement.x != 0 || currentMovement.y != 0;
-        Debug.Log("Input x = " + currentMovement.x);
         if(currentMovement.x > 0){
             leftOrRight = 1;
         }else if(currentMovement.x < 0){
@@ -99,33 +103,44 @@ public class MovementController : MonoBehaviour, IDataPersistance
     }
     
     public void onRotateWorld(InputAction.CallbackContext context){
-        isRotatingPressed = context.ReadValueAsButton(); 
-        Debug.Log("ROTANDO");
-    }
-
-    public void onCreatePlatform(InputAction.CallbackContext context){
-        isCreatePlatformPressed = context.ReadValueAsButton();
-        //Debug.Log("MAGIC = " + isCreatePlatformPressed);
-        if(isCreatePlatformPressed){
-            createPlatform();
+        if(gm.isMechanicActive[0]){
+            isRotatingPressed = context.ReadValueAsButton(); 
+            Debug.Log("ROTANDO");
         }
     }
 
+    public void onCreatePlatform(InputAction.CallbackContext context){
+        if(gm.isMechanicActive[1]){
+            isCreatePlatformPressed = context.ReadValueAsButton();
+            //Debug.Log("MAGIC = " + isCreatePlatformPressed);
+            if(isCreatePlatformPressed){
+                createPlatform();
+            }
+        }
+        
+    }
+
     public void onInvertGravity(InputAction.CallbackContext context){
-        isInvertGravityPressed = context.ReadValueAsButton();
-        if(isInvertGravityPressed){
-            invertGravity();
+        if(gm.isMechanicActive[2]){
+            isInvertGravityPressed = context.ReadValueAsButton();
+            if(isInvertGravityPressed){
+                invertGravity();
+            }
         }
     }
 
     public void onSwing(InputAction.CallbackContext context){
-        isSwingPressed = context.ReadValueAsButton();
-        //Debug.Log("SWING = " + isSwingPressed);
+        if(gm.isMechanicActive[3]){
+            isSwingPressed = context.ReadValueAsButton();
+            //Debug.Log("SWING = " + isSwingPressed);
+        }
     }
 
     public void onPush(InputAction.CallbackContext context){
-        isPushPressed = context.ReadValueAsButton();
-        //Debug.Log("PUSHING = " + isPushPressed);
+        if(gm.isMechanicActive[4]){
+            isPushPressed = context.ReadValueAsButton();
+            //Debug.Log("PUSHING = " + isPushPressed);
+        }
     }
 
     void setUpJumpVariables(){
@@ -146,12 +161,13 @@ public class MovementController : MonoBehaviour, IDataPersistance
     {
         //Debug.Log(currentMovement);
 
-        if(isRotatingPressed){
+        if(isRotatingPressed && !isRotating){
             isRotating = true;
+            //gm.activeCandyPrototipo[(int)Candy.Soul].text += "X";
             if(isLookingToZ){
-                gm.ActivarElementosEnPlano(2);
+                gm.ActivarElementosEnPlano(2, true);
             }else{
-                gm.ActivarElementosEnPlano(1);
+                gm.ActivarElementosEnPlano(1, true);
             }
             rotateWorld();
         }else if(isRotating){
@@ -249,7 +265,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     void rotateWorld(){
 
         //saving data test
-        Debug.Log("Actual points = " + marsPoints);
+        //Debug.Log("Actual points = " + marsPoints);
 
         Quaternion actualRotation = gm.world.transform.rotation;
         if(isLookingToZ){
@@ -260,7 +276,9 @@ public class MovementController : MonoBehaviour, IDataPersistance
                 isRotating = false;
                 actualRotation = maxRotation;
                 isLookingToZ = false;
-                gm.DesactivarElementosEnPlano(1);
+                gm.ActivarElementosEnPlano(1, false);
+                /*gm.activeCandyPrototipo[(int)Candy.Soul].text =
+                    gm.activeCandyPrototipo[(int)Candy.Soul].text.Remove(gm.activeCandyPrototipo[(int)Candy.Soul].text.Length-1, 1);*/
             }
         }else{
             if(gm.world.transform.rotation.y >= minRotation.y){
@@ -270,7 +288,9 @@ public class MovementController : MonoBehaviour, IDataPersistance
                 isRotating = false;
                 actualRotation = minRotation;
                 isLookingToZ = true;
-                gm.DesactivarElementosEnPlano(2);
+                gm.ActivarElementosEnPlano(2, false);
+                /*gm.activeCandyPrototipo[(int)Candy.Soul].text =
+                    gm.activeCandyPrototipo[(int)Candy.Soul].text.Remove(gm.activeCandyPrototipo[(int)Candy.Soul].text.Length-1, 1);*/
             }
         }
         //characterController.enabled = false;
@@ -292,11 +312,13 @@ public class MovementController : MonoBehaviour, IDataPersistance
         //Debug.Log("Crear plataforma en: " + origin);
 
         if(!creationActivated){
-            createdObject = Instantiate(objectPrefab, origin, objectPrefab.transform.rotation, this.transform);
+            createdObject = Instantiate(objectPrefab, origin, objectPrefab.transform.rotation, gm.world.transform);
             creationActivated = true;
+            /*gm.activeCandyPrototipo[(int)Candy.Mars].text = 
+                gm.activeCandyPrototipo[(int)Candy.Mars].text.Remove(gm.activeCandyPrototipo[(int)Candy.Soul].text.Length-1, 1);*/
         }else{
             Destroy(createdObject, .5f);
-            createdObject = Instantiate(objectPrefab, origin, objectPrefab.transform.rotation);
+            createdObject = Instantiate(objectPrefab, origin, objectPrefab.transform.rotation, gm.world.transform);
             creationActivated = true;
         }
     }
