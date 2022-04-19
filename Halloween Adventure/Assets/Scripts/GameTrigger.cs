@@ -6,6 +6,9 @@ public class GameTrigger : MonoBehaviour
 {
     public GameManager gm;
     [SerializeField] int nextLevel;
+    //temporal
+    [SerializeField] int levelToReload;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,12 @@ public class GameTrigger : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             if(this.tag == "Finish"){
                 gm.FinishLevel(nextLevel);
+            }
+            else{
+                Debug.Log("You died");
+                //other.gameObject.transform.position = startAgain.position;
+                gm.SetNextLevelIndex(levelToReload);
+                gm.levelLoader.LoadNextLevel();
             }
         }
     }

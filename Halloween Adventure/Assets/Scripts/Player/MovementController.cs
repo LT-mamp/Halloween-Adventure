@@ -112,7 +112,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     public void onCreatePlatform(InputAction.CallbackContext context){
         if(gm.isMechanicActive[1]){
             isCreatePlatformPressed = context.ReadValueAsButton();
-            //Debug.Log("MAGIC = " + isCreatePlatformPressed);
+            Debug.Log("MAGIC = " + isCreatePlatformPressed);
             if(isCreatePlatformPressed){
                 createPlatform();
             }
