@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameTrigger : MonoBehaviour
 {
     public GameManager gm;
     [SerializeField] int nextLevel;
     //temporal
-    [SerializeField] int levelToReload;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class GameTrigger : MonoBehaviour
             else{
                 Debug.Log("You died");
                 //other.gameObject.transform.position = startAgain.position;
-                gm.SetNextLevelIndex(levelToReload);
+                gm.SetNextLevelIndex(SceneManager.GetActiveScene().buildIndex);
                 gm.levelLoader.LoadNextLevel();
             }
         }
