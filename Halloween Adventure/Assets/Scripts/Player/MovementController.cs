@@ -5,26 +5,12 @@ using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour, IDataPersistance
 {
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    //saving data test
-    [Header("Stuff")]
-    [SerializeField] LayerMask ground;
-    public int marsPoints = 0;
-    public GameManager gm;
-
-    [Header("Player")]
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-    //variables públicas
-=======
     //saving data test
     [Header("Stuff")]
     [SerializeField] LayerMask ground;
     public GameManager gm;
 
     [Header("Player")]
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
     public float moveSpeed = 3; 
     public Transform startPoint;
     [SerializeField] Transform groundPoint;
@@ -45,24 +31,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
     float Igravity = 9.8f;
     float gravity = -9.8f;
 
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    //variables para jump
-    [Header("Jump")]
-    bool isJumpPressed = false;
-    [SerializeField] float initialJumpVelocity;
-    [SerializeField] float maxJumpHeight = 0.5f;
-    [SerializeField] float maxJumpTime = .5f;
-    bool isJumping = false;
-
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
-    //m1 rotar espacio
-    [Header("Rotate")]
-    
-    bool isRotatingPressed = false;
-    bool isRotating = false;
-=======
     //variables para jump
     [Header("Jump")]
     [SerializeField] float initialJumpVelocity;
@@ -73,7 +41,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
 
     //m1 rotar espacio
     [Header("Rotate")]
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
     public bool isLookingToZ = true;
     [SerializeField] float rotationSpeed = 25f;
     bool isRotatingPressed = false;
@@ -81,10 +48,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     Quaternion maxRotation = new Quaternion (0, 0, 0, 1);
     Quaternion minRotation = new Quaternion (0, 0, 0, 1);
 
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    [Header("Creation")]
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
+/*    [Header("Creation")]
     //variables para jump
     bool isJumpPressed = false;
     [SerializeField] float initialJumpVelocity;
@@ -93,7 +57,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
     bool isJumping = false;
 
     //witch and other
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
     bool isCreatePlatformPressed = false;
     [SerializeField] Transform originOfCreation;
     [SerializeField] Vector2 creationPoint;
@@ -101,11 +64,9 @@ public class MovementController : MonoBehaviour, IDataPersistance
     bool creationActivated = false;
     int leftOrRight = 1;
     GameObject createdObject = null;
+    
+    //[Header("Invert")]*/
 
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    //[Header("Invert")]
-=======
-=======
     [Header("Creation")]
     [SerializeField] Transform originOfCreation;
     //[SerializeField] Vector2 creationPoint;
@@ -117,8 +78,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
 
     [Header("Invert")]
     public Transform temporalGroundPoint;
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
     bool isInvertGravityPressed = false;
     bool isInverted = false;
 
@@ -128,24 +87,10 @@ public class MovementController : MonoBehaviour, IDataPersistance
     Transform swingPosition;
     bool isSwinging = false;
 
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    [Header("Push")]
-    bool isPushPressed = false;
-    bool pushEnabled = false;
-    [SerializeField] Pusheable[] pusheable;
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-    bool isPushPressed = false;
-    bool pushEnabled = false;
-    [SerializeField]
-    Pusheable[] pusheable;
-=======
     [Header("Push")]
     [SerializeField] Pusheable[] pusheable;
     bool isPushPressed = false;
     bool pushEnabled = false;
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
     float count = 10f;
 
     private void Awake() {
@@ -159,12 +104,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
         setUpJumpVariables();
     }
 
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    public void onMovementInput(InputAction.CallbackContext context){
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-    void onMovementInput(InputAction.CallbackContext context){
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
+    /*public void onMovementInput(InputAction.CallbackContext context){
         currentMovementInput = context.ReadValue<Vector2>();
         currentMovement.x = currentMovementInput.x;
         currentMovement.z = currentMovementInput.y;
@@ -187,8 +127,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
             Debug.Log("ROTANDO");
         }
     }
-
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
     public void onCreatePlatform(InputAction.CallbackContext context){
         if(gm.isMechanicActive[1]){
             isCreatePlatformPressed = context.ReadValueAsButton();
@@ -196,13 +134,12 @@ public class MovementController : MonoBehaviour, IDataPersistance
             if(isCreatePlatformPressed){
                 createPlatform();
             }
-=======
     void onCreatePlatform(InputAction.CallbackContext context){
         isCreatePlatformPressed = context.ReadValueAsButton();
         //Debug.Log("MAGIC = " + isCreatePlatformPressed);
         if(isCreatePlatformPressed){
-            createPlatform();
-=======
+            createPlatform();*/
+
     public void onMovementInput(InputAction.CallbackContext context){
         if(context.started || context.canceled){
             currentMovementInput = context.ReadValue<Vector2>();
@@ -216,25 +153,16 @@ public class MovementController : MonoBehaviour, IDataPersistance
             directionOfMovement = 1;
         }else if(currentMovement.x < 0){
             directionOfMovement = -1;
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
         }
         
     }
 
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    public void onInvertGravity(InputAction.CallbackContext context){
-        if(gm.isMechanicActive[2]){
-            isInvertGravityPressed = context.ReadValueAsButton();
-            if(isInvertGravityPressed){
-                invertGravity();
-            }
-=======
     public void onJump(InputAction.CallbackContext context){
         if(context.started || context.canceled){
             isJumpPressed = context.ReadValueAsButton();
         }
     }
-    
+
     public void onRotateWorld(InputAction.CallbackContext context){
         if(gm.isMechanicActive[0] && (context.started || context.canceled)){
             isRotatingPressed = context.ReadValueAsButton(); 
@@ -252,37 +180,9 @@ public class MovementController : MonoBehaviour, IDataPersistance
 
                 createPlatform();
             }
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
         }
     }
 
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-    void onInvertGravity(InputAction.CallbackContext context){
-        isInvertGravityPressed = context.ReadValueAsButton();
-        if(isInvertGravityPressed){
-            invertGravity();
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
-        }
-    }
-
-    public void onSwing(InputAction.CallbackContext context){
-        if(gm.isMechanicActive[3]){
-            isSwingPressed = context.ReadValueAsButton();
-            //Debug.Log("SWING = " + isSwingPressed);
-        }
-    }
-
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    public void onPush(InputAction.CallbackContext context){
-        if(gm.isMechanicActive[4]){
-            isPushPressed = context.ReadValueAsButton();
-            //Debug.Log("PUSHING = " + isPushPressed);
-        }
-=======
-    void onPush(InputAction.CallbackContext context){
-        isPushPressed = context.ReadValueAsButton();
-        //Debug.Log("PUSHING = " + isPushPressed);
-=======
     public void onInvertGravity(InputAction.CallbackContext context){
         if(gm.isMechanicActive[2] && (context.started || context.canceled)){
             isInvertGravityPressed = context.ReadValueAsButton();
@@ -304,10 +204,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
         if(gm.isMechanicActive[4] && (context.started || context.canceled)){
             isPushPressed = context.ReadValueAsButton();
             //Debug.Log("PUSHING = " + isPushPressed);
-
         }
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
     }
 
     void setUpJumpVariables(){
@@ -333,23 +230,14 @@ public class MovementController : MonoBehaviour, IDataPersistance
 
         if(isRotatingPressed && !isRotating){
             isRotating = true;
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-=======
             //set active esta chuche en la UI
             gm.SetCandyOnUse(Candy.Soul, true);
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
             //gm.activeCandyPrototipo[(int)Candy.Soul].text += "X";
             if(isLookingToZ){
                 gm.ActivarElementosEnPlano(2, true);
             }else{
                 gm.ActivarElementosEnPlano(1, true);
             }
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-=======
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
             rotateWorld();
         }else if(isRotating){
             rotateWorld();
@@ -386,22 +274,13 @@ public class MovementController : MonoBehaviour, IDataPersistance
         /*if(isInverted && !Physics2D.OverlapCircle(groundPoint.position, .1f, ground)){
             Debug.Log("Not grounded");
         }*/
+
         bool isFalling = (currentMovement.y * invert) <= 0.0f || !isJumpPressed;
         float fallMultiplier = 2.5f;
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-        if(Physics2D.OverlapCircle(groundPoint.position, .1f, ground) && rb.velocity.y <= 0){
-            currentMovement.y = groundedGravity;
-            //Debug.Log("isGrounded");
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-        if(characterController.isGrounded){
-            currentMovement.y = groundedGravity;
-=======
+
         if(Physics2D.OverlapCircle(gp.position, .1f, ground) && (rb.velocity.y * invert) <= 0){
             currentMovement.y = groundedGravity * invert;
             //Debug.Log("isGrounded");
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
         }else if(isFalling){
             float previousYVelocity = currentMovement.y;
             float newYVelocity = previousYVelocity + (g * fallMultiplier * Time.deltaTime);
@@ -440,26 +319,9 @@ public class MovementController : MonoBehaviour, IDataPersistance
     }
 
     void jump(){
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-        bool grounded = Physics2D.OverlapCircle(groundPoint.position, .1f, ground);
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-        bool grounded = true;
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
-        float jumpVel = 0f;
-        if(!isInverted){
-            //grounded = characterController.isGrounded;
-            jumpVel = initialJumpVelocity;
-        }
-        else{
-            grounded = true;
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-            //jumpVel = -initialJumpVelocity;
-=======
-            jumpVel = -initialJumpVelocity;
-=======
         bool grounded;
         float jumpVel = 0f;
+
         if(isInverted){ 
             grounded = Physics2D.OverlapCircle(temporalGroundPoint.position, .1f, ground);
             jumpVel = -initialJumpVelocity;
@@ -467,8 +329,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
         else{
             grounded = Physics2D.OverlapCircle(groundPoint.position, .1f, ground);
             jumpVel = initialJumpVelocity;
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
         }
 
         if(!isJumping && grounded && isJumpPressed){
@@ -476,30 +336,16 @@ public class MovementController : MonoBehaviour, IDataPersistance
             //Debug.Log("initial=" + initialJumpVelocity + " current=" + currentMovement.y);
             currentMovement.y = jumpVel; //* Time.deltaTime;
             //Debug.Log("result = " + currentMovement.y);
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-
-            //saving data test
-            marsPoints += 1;
-
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-=======
 
             //saving data test
             //gm.Apoints += 1;
 
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
         }else if(!isJumpPressed && isJumping && grounded){
             isJumping = false;
         }
     }
 
     void rotateWorld(){
-
-        //saving data test
-        //Debug.Log("Actual points = " + marsPoints);
-
         Quaternion actualRotation = gm.world.transform.rotation;
         if(isLookingToZ){
             if(gm.world.transform.rotation.y <= maxRotation.y){
@@ -509,19 +355,11 @@ public class MovementController : MonoBehaviour, IDataPersistance
                 isRotating = false;
                 actualRotation = maxRotation;
                 isLookingToZ = false;
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-                gm.ActivarElementosEnPlano(1, false);
-                /*gm.activeCandyPrototipo[(int)Candy.Soul].text =
-                    gm.activeCandyPrototipo[(int)Candy.Soul].text.Remove(gm.activeCandyPrototipo[(int)Candy.Soul].text.Length-1, 1);*/
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-=======
+                
                 gm.ActivarElementosEnPlano(1, false);
 
                 //set active esta chuche en la UI
                 gm.SetCandyOnUse(Candy.Soul, false);
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
             }
         }else{
             if(gm.world.transform.rotation.y >= minRotation.y){
@@ -531,19 +369,11 @@ public class MovementController : MonoBehaviour, IDataPersistance
                 isRotating = false;
                 actualRotation = minRotation;
                 isLookingToZ = true;
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-                gm.ActivarElementosEnPlano(2, false);
-                /*gm.activeCandyPrototipo[(int)Candy.Soul].text =
-                    gm.activeCandyPrototipo[(int)Candy.Soul].text.Remove(gm.activeCandyPrototipo[(int)Candy.Soul].text.Length-1, 1);*/
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-=======
+                
                 gm.ActivarElementosEnPlano(2, false);
 
                 //set active esta chuche en la UI
                 gm.SetCandyOnUse(Candy.Soul, false);
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
             }
         }
         //characterController.enabled = false;
@@ -552,22 +382,9 @@ public class MovementController : MonoBehaviour, IDataPersistance
         //characterController.enabled = true;
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        
     }
 
     void createPlatform(){
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-        //Vector2 origin = new Vector2(originOfCreation.position.x, originOfCreation.position.y);
-        Vector2 origin = originOfCreation.position;
-        if(leftOrRight == -1){
-            origin.x -= 5;
-        }
-        //Vector2 origin = new Vector2(leftOrRight*creationPoint.x, creationPoint.y);
-        //Debug.Log("Crear plataforma en: " + origin);
-
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-=======
         //Vector2 origin = new Vector2(originOfCreation.position.x, originOfCreation.position.y);
         Vector2 origin = originOfCreation.position;
         if(directionOfMovement == -1){
@@ -575,9 +392,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
         }
         //Vector2 origin = new Vector2(directionOfMovement*creationPoint.x, creationPoint.y);
         //Debug.Log("Crear plataforma en: " + origin);
-
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
         if(!creationActivated){
             createdObject = Instantiate(objectPrefab, origin, objectPrefab.transform.rotation, gm.world.transform);
             creationActivated = true;
@@ -661,31 +475,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
             other.gameObject.GetComponent<Pusheable>().UpdateDirection(direction);
         }
     }
-
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-    /*private void OnEnable() {
-=======
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/MovementController.cs
-    private void OnEnable() {
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
-        playerInput.CharacterControls.Enable();
-    }
-    private void OnDisable() {
-        playerInput.CharacterControls.Disable();
-    }*/
-
-    public void LoadData(GameData data){
-        this.marsPoints = data.marsPoints;
-    }
-<<<<<<< Updated upstream:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
-
-    public void SaveData(ref GameData data){
-        data.marsPoints = this.marsPoints;
-    }
-
-
-=======
-=======
+    
     private void OnCollisionEnter2D(Collision2D other) {
         if(pushEnabled && other.gameObject.tag == "push"){
             Pusheable box = other.gameObject.GetComponent<Pusheable>();
@@ -712,10 +502,6 @@ public class MovementController : MonoBehaviour, IDataPersistance
         data.Bpoints = gm.Bpoints;
         data.Cpoints = gm.Cpoints;
     }
-
-
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/Player/MovementController.cs
->>>>>>> Stashed changes:Halloween Adventure/Assets/Scripts/MovementController.cs
 }
 
 

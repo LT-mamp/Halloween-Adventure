@@ -1,7 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< Updated upstream
-=======
 --- !u!1 &103755200
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
->>>>>>> Stashed changes
 --- !u!1 &2199772687112040044
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,11 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< Updated upstream
-  m_IsActive: 0
-=======
   m_IsActive: 1
->>>>>>> Stashed changes
 --- !u!4 &5615772052157992121
 Transform:
   m_ObjectHideFlags: 0
@@ -118,10 +111,7 @@ Transform:
   m_Children:
   - {fileID: 8002209608329884516}
   - {fileID: 7886732884809023638}
-<<<<<<< Updated upstream
-=======
   - {fileID: 5145403402833764465}
->>>>>>> Stashed changes
   m_Father: {fileID: 8002209607255903304}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,10 +176,7 @@ Transform:
   - {fileID: 8002209607305396447}
   - {fileID: 8002209608409799411}
   - {fileID: 8002209608584307796}
-<<<<<<< Updated upstream
-=======
   - {fileID: 5145403404150649185}
->>>>>>> Stashed changes
   m_Father: {fileID: 8002209607255903304}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -685,26 +672,15 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-<<<<<<< Updated upstream
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.6509434, g: 0, b: 0, a: 1}
-=======
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 34ac23ecd82c6da488edef28a540149a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> Stashed changes
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
   m_Size: {x: 1, y: 2}
-<<<<<<< Updated upstream
-  m_AdaptiveModeThreshold: 1
-  m_SpriteTileMode: 0
-=======
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 1
->>>>>>> Stashed changes
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
@@ -731,11 +707,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8002209607651610860}
-<<<<<<< Updated upstream
-  m_Enabled: 1
-=======
   m_Enabled: 0
->>>>>>> Stashed changes
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -745,19 +717,11 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
-    oldSize: {x: 0.2, y: 0.2}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 1
-    drawMode: 2
-    adaptiveTiling: 0
-=======
     oldSize: {x: 10.24, y: 10.24}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 1
->>>>>>> Stashed changes
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
@@ -791,12 +755,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6.2, z: -40.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
-<<<<<<< Updated upstream
-  m_Children: []
-=======
   m_Children:
   - {fileID: 103755202}
->>>>>>> Stashed changes
   m_Father: {fileID: 8002209608192533749}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1497,11 +1457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< Updated upstream
-  m_IsActive: 1
-=======
   m_IsActive: 0
->>>>>>> Stashed changes
 --- !u!4 &8002209608366085601
 Transform:
   m_ObjectHideFlags: 0
@@ -1682,10 +1638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   nextLevel: -1
-<<<<<<< Updated upstream
-=======
   levelToReload: 0
->>>>>>> Stashed changes
 --- !u!1 &8002209608478719180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,11 +1747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< Updated upstream
-  m_IsActive: 0
-=======
   m_IsActive: 1
->>>>>>> Stashed changes
 --- !u!4 &8002209608584307796
 Transform:
   m_ObjectHideFlags: 0
@@ -1809,14 +1758,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-<<<<<<< Updated upstream
-  m_Children: []
-=======
   m_Children:
   - {fileID: 8002209607279656223}
   - {fileID: 5469113960122670917}
   - {fileID: 5469113960640202254}
->>>>>>> Stashed changes
   m_Father: {fileID: 588995824111054993}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1943,11 +1888,7 @@ GameObject:
   - component: {fileID: 8002209608689778064}
   m_Layer: 0
   m_Name: Player 2d
-<<<<<<< Updated upstream
-  m_TagString: Player
-=======
   m_TagString: Untagged
->>>>>>> Stashed changes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1984,10 +1925,6 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
-<<<<<<< Updated upstream
-  marsPoints: 0
-=======
->>>>>>> Stashed changes
   gm: {fileID: 0}
   moveSpeed: 5
   startPoint: {fileID: 8002209607305396447}
@@ -1996,14 +1933,8 @@ MonoBehaviour:
   maxJumpHeight: 3
   maxJumpTime: 0.5
   isLookingToZ: 1
-<<<<<<< Updated upstream
-  rotationSpeed: 5
-  originOfCreation: {fileID: 8002209607496083028}
-  creationPoint: {x: 0, y: 0}
-=======
   rotationSpeed: 25
   originOfCreation: {fileID: 8002209607496083028}
->>>>>>> Stashed changes
   objectPrefab: {fileID: 595247750776095126, guid: 3dee2345a70d6aa4fb1322f42278c8c7, type: 3}
   pusheable:
   - {fileID: 0}
@@ -2537,8 +2468,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33172652, y: 1}
   m_EdgeRadius: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &5469113960790721519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2893,4 +2822,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2910919787556868279, guid: 257dfec9685be31498bf9f81f65a283b, type: 3}
   m_PrefabInstance: {fileID: 8002209608838262982}
   m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes

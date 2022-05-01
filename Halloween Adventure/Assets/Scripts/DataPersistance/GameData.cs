@@ -6,22 +6,6 @@ using UnityEngine;
 public class GameData
 {
     //variables públicas de los datos que se quieran guardar
-<<<<<<< Updated upstream
-    /*
-    camino en la narrativa:
-    marspoints, leo points, ...
-    current level
-    si la parte de visual novel es muy larga: hacer checkpoints y entonces ver el último chekpoint donde se queda
-    */
-    //ejemplo:
-    public int marsPoints;
-
-    //default values
-    public GameData(){
-        this.marsPoints = 0;
-    }
-}
-=======
     [Header("Game Settings")]
     public string idioma;
     public float volumeBG;
@@ -73,4 +57,3 @@ public enum Data {
     D_POINTS,
     ACHIVEMENTS
 }
->>>>>>> Stashed changes

@@ -8,12 +8,9 @@ public class DataPersistanceManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] string fileName;
 
-<<<<<<< Updated upstream
-=======
     [Header("Confirmation Box")]
     [SerializeField] GameObject confirmationBox;
 
->>>>>>> Stashed changes
     public static DataPersistanceManager instance  { get; private set;  }
 
     GameData gameData;
@@ -21,10 +18,6 @@ public class DataPersistanceManager : MonoBehaviour
     
     FileDataHandler dataHandler;
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     private void Awake(){
         if (instance != null){
             Debug.LogError("Found more than one Data Persistance Manager in the scene.");
@@ -33,14 +26,6 @@ public class DataPersistanceManager : MonoBehaviour
     }
 
     private void Start() {
-<<<<<<< Updated upstream
-    this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.dataPersistanceObjects = FindAllDataPersistanceObjects();
-        LoadGame();
-    }
-
-    public void NewGame(){
-=======
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistanceObjects = FindAllDataPersistanceObjects();
         if(confirmationBox != null) confirmationBox.SetActive(false);
@@ -53,7 +38,6 @@ public class DataPersistanceManager : MonoBehaviour
             //are you sure?
             confirmationBox.SetActive(true);
         }
->>>>>>> Stashed changes
         this.gameData = new GameData();
     }
 
@@ -64,11 +48,7 @@ public class DataPersistanceManager : MonoBehaviour
         //if no data can be loaded initialize to a new game
         if(this.gameData == null){
             Debug.Log("No data found. Initializing data to defaults.");
-<<<<<<< Updated upstream
-            NewGame();
-=======
             NewGame(true);
->>>>>>> Stashed changes
         }
 
         // push the loaded data to all other scripts that need it
@@ -83,18 +63,12 @@ public class DataPersistanceManager : MonoBehaviour
         foreach (IDataPersistance dataPersistanceObj in dataPersistanceObjects){
             dataPersistanceObj.SaveData(ref gameData);
         }
-<<<<<<< Updated upstream
-        Debug.Log("Saved mars points: " + gameData.marsPoints);
-=======
         //Debug.Log("Saved mars points: " + gameData.chekpoint);
->>>>>>> Stashed changes
 
         // save the data to a file using the data handler
         dataHandler.Save(gameData);
     }
 
-<<<<<<< Updated upstream
-=======
     public void SaveSpecificData(Data[] dataName, float[] newValue){
         for (int i = 0; i < dataName.Length; i++)
         {
@@ -143,7 +117,6 @@ public class DataPersistanceManager : MonoBehaviour
         }
     }
 
->>>>>>> Stashed changes
     private void OnApplicationQuit() {
         SaveGame();
     }

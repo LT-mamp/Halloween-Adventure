@@ -5,17 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 
-<<<<<<< Updated upstream
-public class DialogManager1 : MonoBehaviour
-{
-    private static DialogManager1 instance;
-
-    [Header("Dialogue UI")]
-    [SerializeField] Image actorImage;
-    [SerializeField] TextMeshProUGUI actorName;
-    [SerializeField] TextMeshProUGUI messageText;
-    [SerializeField] RectTransform backgoundBox;
-=======
 public enum DialogMode{
     NORMAL,
     AUTO,
@@ -38,7 +27,6 @@ public class DialogManager1 : MonoBehaviour
     [Header("Choices UI")]
     [SerializeField] GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
->>>>>>> Stashed changes
 
     [Header("Animation")]
     public Animator animator;
@@ -46,28 +34,19 @@ public class DialogManager1 : MonoBehaviour
 
     [Header("Game Manager")]
     [SerializeField] GameManager gm;
-<<<<<<< Updated upstream
-
-    //[Header("Story")]
-    Story currentStory;
-=======
     [SerializeField] bool bifurcation = false;
 
     //[Header("Story")]
     Story currentStory;
     bool hasChoices;
->>>>>>> Stashed changes
     //bool isPlaying;
     bool allTyped;
     string messageToDisplay;
     Coroutine typeMessage;
     bool skiping = false;
-<<<<<<< Updated upstream
-=======
     bool paused = false;
     //bool isChoosing = false;
     DialogMode mode = DialogMode.NORMAL;
->>>>>>> Stashed changes
 
     private const string Actor_Name = "Name";
     private const string Actor_Image = "Image";
@@ -84,18 +63,6 @@ public class DialogManager1 : MonoBehaviour
     private void Start() {
         //isPlaying = false;
         allTyped = true;
-<<<<<<< Updated upstream
-    }
-
-    private void Update() {
-        /*if(!isPlaying){
-            return;
-        }*/
-        
-        //continue to next line if continue is pressed
-        // that means call nextMessage()
-    }
-=======
 
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
@@ -113,7 +80,6 @@ public class DialogManager1 : MonoBehaviour
     /*public void ChangeDialogMode(DialogMode newMode){
         dialogMode = newMode;
     }*/
->>>>>>> Stashed changes
 
     public void OpenDialog(TextAsset inkJSON){
         currentStory = new Story(inkJSON.text);
@@ -124,10 +90,7 @@ public class DialogManager1 : MonoBehaviour
         if(currentStory.canContinue){
             DisplayMessage();
             animator.SetBool("isStarted", true);
-<<<<<<< Updated upstream
-=======
             holeScreenNextButton.SetActive(true);
->>>>>>> Stashed changes
         }
         else{
             CloseDialog();
@@ -137,23 +100,12 @@ public class DialogManager1 : MonoBehaviour
     }
 
     void DisplayMessage(){
-<<<<<<< Updated upstream
-        if(!allTyped){
-=======
         if(!allTyped /*&& typeMessage != null*/){
->>>>>>> Stashed changes
             StopCoroutine(typeMessage);
             messageText.text = messageToDisplay;
             allTyped = true;
         }else{
             messageText.text = "";
-<<<<<<< Updated upstream
-            allTyped = false;
-
-            messageToDisplay = currentStory.Continue();
-        
-            typeMessage = StartCoroutine(TypeMessage(messageToDisplay));
-=======
 
             messageToDisplay = currentStory.Continue();
 
@@ -173,7 +125,6 @@ public class DialogManager1 : MonoBehaviour
                 //if(test) Debug.Log("display \"" + messageToDisplay + "\" that.");
 
             }
->>>>>>> Stashed changes
 
             //tags
             HandleTags(currentStory.currentTags);
@@ -189,11 +140,6 @@ public class DialogManager1 : MonoBehaviour
             yield return new WaitForSeconds(textSpeed);
         }
         allTyped = true;
-<<<<<<< Updated upstream
-    }
-
-    void HandleTags(List<string> currentTags){
-=======
         if(mode == DialogMode.AUTO){
             StartCoroutine(AutoNextMessage());
         }
@@ -205,7 +151,6 @@ public class DialogManager1 : MonoBehaviour
     }
 
     void HandleTags(List<string> currentTags){ 
->>>>>>> Stashed changes
         foreach (string tag in currentTags)
         {
             //parse the tag
@@ -214,42 +159,6 @@ public class DialogManager1 : MonoBehaviour
             if(splitTag.Length != 2){
                 Debug.LogError("La tag no se ha podido leer correctamente. Tag: " + tag);
             }
-<<<<<<< Updated upstream
-            string tagKey = splitTag[0].Trim();
-            string tagValue = splitTag[1].Trim();
-
-            switch (tagKey)
-            {
-                case Actor_Name:
-                    //Debug.Log("name=" + tagValue);
-                    if(tagValue == "None"){
-                        actorName.enabled = false;
-                    }else{
-                        actorName.enabled = true;
-                        actorName.text = tagValue;
-                    }
-                    break;
-                case Actor_Image:
-                    //Debug.Log("image=" + tagValue);
-                    if(tagValue == "None"){
-                        actorImage.enabled = false;
-                    }else{
-                        //actorImage.sprite = tagValue;
-                    }
-                    break;
-                case Sound_To_Play:
-                    Debug.Log("name=" + tagValue);
-                    /*if(tagValue == "None"){
-                        actorName.enabled = false;
-                    }else{
-                        actorName.text = tagValue;
-                    }*/
-                    break;
-                default:
-                    Debug.LogWarning("Tag no válidad: " + tag);
-                    break;
-            }
-=======
             else{
                 string tagKey = splitTag[0].Trim();
                 string tagValue = splitTag[1].Trim();
@@ -308,28 +217,10 @@ public class DialogManager1 : MonoBehaviour
                 }
             }
             
->>>>>>> Stashed changes
         }
     }
 
     public void NextMessage(){
-<<<<<<< Updated upstream
-        if(currentStory.canContinue){
-            DisplayMessage();
-        }
-        else{
-            skiping = false;
-            CloseDialog();
-        }
-    }
-
-    public void SkipDialog(){
-        skiping = true;
-        while(skiping){
-            NextMessage();
-        }
-    }
-=======
         if(!paused){
             if(hasChoices){
                 skiping = false;
@@ -446,25 +337,18 @@ public class DialogManager1 : MonoBehaviour
         }
         Debug.Log(mode);
     }
->>>>>>> Stashed changes
 
     void CloseDialog(){
         Debug.Log("End of story");
 
-<<<<<<< Updated upstream
-=======
         holeScreenNextButton.SetActive(false);
 
->>>>>>> Stashed changes
         animator.SetBool("isStarted", false);
         //isPlaying = false;
         messageText.text = "";
 
         //gm.SetNextLevelIndex(-1);
-<<<<<<< Updated upstream
-=======
         if(bifurcation) gm.SetNextLevelIndex(-2);
->>>>>>> Stashed changes
 
         gm.levelLoader.LoadNextLevel();
     }
