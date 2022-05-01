@@ -1,15 +1,12 @@
 fileFormatVersion: 2
 guid: d480615e55242bc43b57144b80513f44
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -1256725672893665516
-    second: pj_image_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -38,13 +35,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
-  nPOTScale: 0
+  nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 0
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -53,9 +50,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -78,108 +75,13 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: pj_image_0
-      rect:
-        serializedVersion: 2
-        x: 187
-        y: 157
-        width: 609
-        height: 725
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -69.5, y: -356.5}
-        - {x: -126.5, y: -336.5}
-        - {x: -177.5, y: -298.5}
-        - {x: -219.5, y: -256.5}
-        - {x: -256.5, y: -202.5}
-        - {x: -286.5, y: -132.5}
-        - {x: -301.5, y: -72.5}
-        - {x: -304.5, y: -8.5}
-        - {x: -304.5, y: 44.5}
-        - {x: -294.5, y: 113.5}
-        - {x: -236.5, y: 249.5}
-        - {x: -123.5, y: 335.5}
-        - {x: -58.5, y: 356.5}
-        - {x: 1.5, y: 362.5}
-        - {x: 70.5, y: 355.5}
-        - {x: 152.5, y: 323.5}
-        - {x: 246.5, y: 223.5}
-        - {x: 293.5, y: 117.5}
-        - {x: 304.5, y: 46.5}
-        - {x: 304.5, y: -14.5}
-        - {x: 300.5, y: -73.5}
-        - {x: 290.5, y: -122.5}
-        - {x: 252.5, y: -229.5}
-        - {x: 133.5, y: -338.5}
-        - {x: 60.5, y: -358.5}
-        - {x: -4.5, y: -362.5}
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41f2f0fa8a63f8ee0800000000000000
-      internalID: -1256725672893665516
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9cf994fba27e9bd458673b11e2d72801
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
