@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pusheable : MonoBehaviour
 {
     public float moveSpeed = 5;
+
     bool pushed = false;
     bool pusheable = false;
     int xAxe = 0;
@@ -12,7 +13,17 @@ public class Pusheable : MonoBehaviour
     int axe = 0;
     float direction = 0;
 
-    private void OnTriggerEnter(Collider other) {
+    Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rbConstrained;
+
+    private void Start() {
+        rb = GetComponent<Rigidbody2D>();
+        //rbConstrained = new Rigidbody2D();
+        //rbConstrained.constraints = fr
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        //Debug.Log("Hello?");
         if(other.gameObject.tag == "Player"){
             if(other.gameObject.GetComponent<MovementController>().isLookingToZ){
                 axe = zAxe;
@@ -21,11 +32,11 @@ public class Pusheable : MonoBehaviour
             }
 
             pushed = true;
-            Debug.Log("Pusheable");
+            //Debug.Log("Pusheable");
         }
     }
 
-    private void OnTriggerExit(Collider other) {
+    private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.tag == "Player"){
             pushed = false;
         }
@@ -42,17 +53,26 @@ public class Pusheable : MonoBehaviour
     }
 
     private void Update() {
+        //Vector3 newPosition = this.transform.position;
+
         if(pushed && pusheable){
-            Debug.Log("Pushing");
-            Vector3 newPosition = this.transform.position;
+            if(rb.constraints != RigidbodyConstraints2D.FreezeRotation) rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            //Debug.Log("Pushing");
             if(axe == xAxe){
-                newPosition.x += direction * moveSpeed * Time.deltaTime;
+                //newPosition.x += direction * moveSpeed * Time.deltaTime;
             }
             else{
-                newPosition.z += direction * moveSpeed * Time.deltaTime;
+                //newPosition.z += direction * moveSpeed * Time.deltaTime;
             }
-
-            this.transform.position = newPosition;
         }
+        else {
+            if(rb.constraints == RigidbodyConstraints2D.FreezeRotation) {
+                //rb.constraints &= RigidbodyConstraints2D.FreezePositionX;
+                rb.constraints = rbConstrained.constraints;
+                Debug.Log("CHAN");
+            }
+        }
+        
+        //this.transform.position = newPosition;
     }
 }
