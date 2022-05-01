@@ -12,8 +12,7 @@ public interface IDataPersistance
     //luego añadir los dos métodos de arriba PUBLICAS
     //con el ejemplo de marspoints:
     /*
-        en la funcion de load pones: this.marsPoints = data.marsPoints
-        en la funcion de save: data.marsPoints = this.marsPoints
+    en la funcion de load pones: this.marsPoints = data.marsPoints
+    en la funcion de save: data.marsPoints = this.marsPoints
     */
-    //esto lo que hace es que cambia los datos en el archivo de guardado
 }

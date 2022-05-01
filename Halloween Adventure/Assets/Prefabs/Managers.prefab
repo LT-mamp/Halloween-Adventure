@@ -1,53 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1384053167
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1384053169}
-  - component: {fileID: 1384053168}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1384053169
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384053167}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8236870931210134234}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1384053168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384053167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa82cd86d810f574cafe0e7dee257688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgMusicSource:
-  - {fileID: 0}
-  fxSource: []
-  voiceSource: []
-  dpm: {fileID: 3795295360565488121}
 --- !u!1 &1388080623
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,15 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorImage: {fileID: 0}
+  actorName: {fileID: 0}
   messageText: {fileID: 0}
   backgoundBox: {fileID: 0}
-  holeScreenNextButton: {fileID: 0}
-  dialogModeText: {fileID: 0}
-  choices: []
   animator: {fileID: 0}
   textSpeed: 0.05
   gm: {fileID: 0}
-  bifurcation: 0
 --- !u!1 &3804599396329811897
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +80,6 @@ Transform:
   - {fileID: 1235770361869297799}
   - {fileID: 3527353868093524689}
   - {fileID: 1388080624}
-  - {fileID: 1384053169}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,7 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data
-  confirmationBox: {fileID: 0}
 --- !u!1 &7378719879034341555
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +137,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1235770361869297799}
   - component: {fileID: 1642170278590650960}
-  - component: {fileID: 1827321797}
   m_Layer: 0
   m_Name: Gamemanager
   m_TagString: Untagged
@@ -224,58 +170,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ff6980e31d3f243a3a6a2553eb7c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoader: {fileID: 0}
-  scene1: 
-  scene2: 
-  scene3: 
-  isMechanicActive: 0000000000
-  Apoints: 0
-  Bpoints: 0
-  Cpoints: 0
-  Dpoints: 0
-  isPlatformLevel: 1
-  world: {fileID: 0}
-  candyCount:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  candyImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  candyOnUse:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &1827321797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7378719879034341555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83055a098381d94cb58fbc34d78f66b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dpm: {fileID: 3795295360565488121}
-  audioManager: {fileID: 1384053168}
-  VolumeUITex:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  VolumeScrollbar:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  textSpeedUIText: {fileID: 0}
-  textSpeedScrollbar: {fileID: 0}
-  toggleEsp: {fileID: 0}
-  toggleEng: {fileID: 0}
