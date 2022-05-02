@@ -24,6 +24,21 @@ public class GameConfigManager : MonoBehaviour
     //float volumeValue;
     //float textSpeed;
     private void Start() {
+        StartCoroutine(initialize());
+    }
+
+    IEnumerator initialize() {
+        if(!audioManager.loaded){
+            yield return new WaitForEndOfFrame();
+        }
+        if(!audioManager.loaded){
+            Debug.Log("Needs more time");
+            yield return new WaitForSeconds(1f);
+        }
+        if(!audioManager.loaded){
+            Debug.Log("Needs a lot more time");
+            yield return new WaitForSeconds(2f);
+        }
         for (int i = 0; i < 3; i++)
         {
             GetMusicVolume(i);
@@ -54,6 +69,8 @@ public class GameConfigManager : MonoBehaviour
         }else{
             textSpeedUIText.text = "None";
         }
+
+        //Debug.Log("New text speed = " + newSpeed);
 
         dpm.SaveSpecificData(Data.TEXT_SPEED, newSpeed);
     }

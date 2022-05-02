@@ -13,7 +13,12 @@ public class AudioManager : MonoBehaviour, IDataPersistance
     float bgMusicVolume;
     float fxVolume;
     float voiceVolume;
-    //hacer save and load de lo de arriba
+    
+    public bool loaded;
+    
+    private void Start() {
+        loaded = false;
+    }
 
     public void setNewVolume(int audioCategory, float newVolume){
         switch(audioCategory){
@@ -42,6 +47,7 @@ public class AudioManager : MonoBehaviour, IDataPersistance
     }
 
     public float getVolumeValue(int audioSettingId){
+        if(!loaded) Debug.LogWarning("Can't get volume value, still not loaded");
         if(audioSettingId == 0){
             return bgMusicVolume;
         }else if(audioSettingId == 1){
@@ -58,6 +64,7 @@ public class AudioManager : MonoBehaviour, IDataPersistance
         bgMusicVolume = data.volumeBG;
         fxVolume = data.volumeFX;
         voiceVolume = data.volumeVoice;
+        loaded = true;
     }
 
     public void SaveData(ref GameData data){
