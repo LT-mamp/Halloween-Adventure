@@ -15,6 +15,8 @@ public enum Candy {
 
 public class GameManager : MonoBehaviour, IDataPersistance
 {
+    //public GameObject endTrigger;
+    //public bool endEjeX = true;
 
     [Header("LevelLoader")]
     public LevelLoader levelLoader;
@@ -32,14 +34,14 @@ public class GameManager : MonoBehaviour, IDataPersistance
     [HideInInspector] public int Dpoints;
 
     [Header("World elements")]
-    [SerializeField] bool isPlatformLevel = true;
+    public bool isPlatformLevel = true;
     public GameObject world;
     //public bool isLookingToZ = true;
 
     [Header("User Interface")]
     [SerializeField] TextMeshProUGUI[] candyCount = new TextMeshProUGUI[5];
     [SerializeField] Image[] candyImage; 
-    [SerializeField] TextMeshProUGUI[] candyOnUse = new TextMeshProUGUI[5];
+    [SerializeField] GameObject[] candyOnUse = new GameObject[5];
     //public TextMeshProUGUI[]  activeCandyPrototipo = new TextMeshProUGUI[5];
     //public List<Candy> activeCandy;
 
@@ -112,6 +114,7 @@ public class GameManager : MonoBehaviour, IDataPersistance
         }else{
             levelLoader.levelIndex = index;
         }
+        Debug.Log("THIS = " + SceneManager.GetActiveScene().buildIndex + "\nNEXT = " + levelLoader.levelIndex);
     }
 
     public void ActivarElementosEnPlano(int plano, bool activar){
@@ -130,6 +133,7 @@ public class GameManager : MonoBehaviour, IDataPersistance
         }else{
             Debug.LogWarning("El índice del plano a des/activar no es correcto. PlanoX = 1, planoZ = 2.");
         }
+        //endTrigger.SetActive(false);
     }
 
     private GameObject getChildWithName(string childName, GameObject parent){
@@ -153,7 +157,7 @@ public class GameManager : MonoBehaviour, IDataPersistance
     }
 
     public void SetCandyOnUse(Candy candyType, bool active){
-        candyOnUse[(int)candyType].gameObject.SetActive(active);
+        candyOnUse[(int)candyType].SetActive(active);
     }
 
     public void ActivateMechanik(int mechanik, bool activate){

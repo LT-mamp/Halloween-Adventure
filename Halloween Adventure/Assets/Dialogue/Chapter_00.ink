@@ -39,7 +39,7 @@ Ms. D: Soul? Soul! Oh no! Where'd that kid go? #Name:Ms.D //#Image:None #Sound:N
 
 //''Screen: soul curious about Terry's light form.''
 
- ??? #Name:Soul //#Image:None #Sound:None
+ ??? #Name:Soul #bg:x //#Image:None #Sound:None
 
 Little Soul didn't know that there where fire flights in that village. But there it was, a tiny light in the middle of the street, just floating around. #Name:None //#Image:None #Sound:None
 

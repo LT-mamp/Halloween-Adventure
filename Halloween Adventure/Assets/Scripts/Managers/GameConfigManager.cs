@@ -8,6 +8,7 @@ public class GameConfigManager : MonoBehaviour
 {
     public DataPersistanceManager dpm;
     public AudioManager audioManager;
+    public DialogManager1 dialogManager;
 
     [Header("Music")]
     [SerializeField] TextMeshProUGUI[] VolumeUITex;
@@ -71,6 +72,7 @@ public class GameConfigManager : MonoBehaviour
         }
 
         //Debug.Log("New text speed = " + newSpeed);
+        dialogManager.ChangeTextSpeed(newSpeed);
 
         dpm.SaveSpecificData(Data.TEXT_SPEED, newSpeed);
     }

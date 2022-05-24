@@ -14,6 +14,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     public float moveSpeed = 3; 
     public Transform startPoint;
     [SerializeField] Transform groundPoint;
+    [SerializeField] SpriteRenderer sprite;
 
     //Input
     //PlayerInput playerInput;
@@ -167,6 +168,8 @@ public class MovementController : MonoBehaviour, IDataPersistance
         if(gm.isMechanicActive[0] && (context.started || context.canceled)){
             isRotatingPressed = context.ReadValueAsButton(); 
             Debug.Log("ROTANDO " + isRotatingPressed);
+        }else if(context.canceled){
+            isRotatingPressed = false;
         }
     }
 
@@ -221,15 +224,26 @@ public class MovementController : MonoBehaviour, IDataPersistance
         this.transform.position = startPoint.position;
     }
 
+    IEnumerator socorro(){
+        yield return new WaitForSeconds(1f);
+        if(isRotating){
+            Debug.LogError("Forcing exit of rotation");
+            isRotating = false;
+            if(isRotatingPressed){
+                Debug.LogWarning("Why");
+                isRotatingPressed = false;
+            }
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
-        /*if(rb.velocity.y < -10 || rb.velocity.y > 10){
-            Debug.Log(rb.velocity.y);
-        }*/
 
         if(isRotatingPressed && !isRotating){
             isRotating = true;
+            StartCoroutine("socorro");
+            //gm.endTrigger.SetActive(false);
             //set active esta chuche en la UI
             gm.SetCandyOnUse(Candy.Soul, true);
             //gm.activeCandyPrototipo[(int)Candy.Soul].text += "X";
@@ -308,9 +322,11 @@ public class MovementController : MonoBehaviour, IDataPersistance
         newMovement.x = currentMovement.x * moveSpeed;
         if(newMovement.x > currentMovement.x){
             direction = 1;
+            sprite.flipX = false;
         }
         else{
             direction = -1;
+            if(newMovement.x < 0)sprite.flipX = true;
         }
         
         //characterController.Move(newMovement * Time.deltaTime);
@@ -357,6 +373,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
                 isLookingToZ = false;
                 
                 gm.ActivarElementosEnPlano(1, false);
+                //gm.endTrigger.SetActive(gm.endEjeX);
 
                 //set active esta chuche en la UI
                 gm.SetCandyOnUse(Candy.Soul, false);
@@ -371,6 +388,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
                 isLookingToZ = true;
                 
                 gm.ActivarElementosEnPlano(2, false);
+                //gm.endTrigger.SetActive(!gm.endEjeX);
 
                 //set active esta chuche en la UI
                 gm.SetCandyOnUse(Candy.Soul, false);
@@ -406,6 +424,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
 
     void invertGravity(){
         isInverted = !isInverted;
+        sprite.flipY = isInverted;
         if(isInverted){
             Physics2D.gravity = new Vector3(0f, -1f, 0f);
             

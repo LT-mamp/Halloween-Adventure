@@ -8,6 +8,8 @@ TagManager:
   - eje z
   - push
   - Start
+  - magicBox
+  - mechanicAtivator
   layers:
   - Default
   - TransparentFX

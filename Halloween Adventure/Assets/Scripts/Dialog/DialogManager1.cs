@@ -14,8 +14,8 @@ public enum DialogMode{
 public class DialogManager1 : MonoBehaviour
 {
     private static DialogManager1 instance;
-    
-//bool test = false;
+
+    public DataPersistanceManager dpm;
 
     [Header("Dialogue UI")]
     [SerializeField] Image actorImage;
@@ -26,7 +26,13 @@ public class DialogManager1 : MonoBehaviour
 
     [Header("Choices UI")]
     [SerializeField] GameObject[] choices;
+    [SerializeField] GameObject choicesBox;
     private TextMeshProUGUI[] choicesText;
+
+    [Header("Backgrounds")]
+    [SerializeField] GameObject[] bgs;
+    int actualBg = 0;
+    
 
     [Header("Animation")]
     public Animator animator;
@@ -51,6 +57,7 @@ public class DialogManager1 : MonoBehaviour
     private const string Actor_Name = "Name";
     private const string Actor_Image = "Image";
     private const string Sound_To_Play = "Sound";
+    private const string Background = "bg";
 
 
     private void Awake() {
@@ -74,6 +81,25 @@ public class DialogManager1 : MonoBehaviour
         hasChoices = false;
         hideChoices(0);
         holeScreenNextButton.SetActive(false);
+        //float speed = dpm.loadVNData(1);
+        //setSpeed(speed);
+        Debug.Log("START dialog");
+    }
+
+    private void setSpeed(float speed){
+        mode = DialogMode.NORMAL;
+
+        if(speed < 30){
+            textSpeed = 0.25f;
+        }else if(speed < 60){
+            textSpeed = 0.05f;
+        }else if(speed < 90){
+            textSpeed = 0.001f;
+        }else{
+            mode = DialogMode.NO_TYPPING;
+            //Debug.Log("NO tiping");
+        }
+        //Debug.Log("m " + mode);
     }
     
 
@@ -114,8 +140,10 @@ public class DialogManager1 : MonoBehaviour
             if(mode == DialogMode.NO_TYPPING){
                 messageText.text = messageToDisplay;
                 allTyped = true;
+                //Debug.Log("Mode = " + mode);
             }
             else{
+                //Debug.Log("Mode = " + mode);
                 allTyped = false;
                 if(messageToDisplay == "" || messageToDisplay == "\n"){
                     messageToDisplay =currentStory.Continue();
@@ -191,6 +219,12 @@ public class DialogManager1 : MonoBehaviour
                             actorName.text = tagValue;
                         }*/
                         break;
+                    case Background:
+                        //display next background
+                        //init animation
+                        actualBg++;
+                        bgs[actualBg].SetActive(true);
+                        break;
                     case "path":
                         Debug.Log("Path=" + tagValue);
                         switch(tagValue){
@@ -218,19 +252,27 @@ public class DialogManager1 : MonoBehaviour
             }
             
         }
+        actorImage.enabled = false;
     }
 
     public void NextMessage(){
         if(!paused){
             if(hasChoices){
-                skiping = false;
-                displayChoices();
-                holeScreenNextButton.SetActive(false);
+                if(allTyped){
+                    skiping = false;
+                    choicesBox.SetActive(true);
+                    displayChoices();
+                    holeScreenNextButton.SetActive(false);
+                }
+                else{
+                    DisplayMessage();
+                }
             }
             else if(currentStory.canContinue){
                 if(mode == DialogMode.AUTO && !allTyped){
                     ChangeAuto();
                 }
+                choicesBox.SetActive(false);
                 DisplayMessage();
                 if(!holeScreenNextButton.activeInHierarchy && !skiping && mode != DialogMode.AUTO) holeScreenNextButton.SetActive(true);
             }
@@ -324,6 +366,10 @@ public class DialogManager1 : MonoBehaviour
             NextMessage();
         }
     }
+
+    public void ChangeTextSpeed(int speed){
+        setSpeed(speed);
+    }
     
     public void ChangeAuto(){
         if(mode == DialogMode.NORMAL){
@@ -347,10 +393,13 @@ public class DialogManager1 : MonoBehaviour
         //isPlaying = false;
         messageText.text = "";
 
-        //gm.SetNextLevelIndex(-1);
-        if(bifurcation) gm.SetNextLevelIndex(-2);
+        if(!gm.isPlatformLevel){
+            //gm.SetNextLevelIndex(-1);
+            if(bifurcation) gm.SetNextLevelIndex(-2);
 
-        gm.levelLoader.LoadNextLevel();
+            gm.levelLoader.LoadNextLevel();
+        }
+        
     }
 
     //si el texto se corresponde con un comando, hacer un switch y llamar a la función correspondiente.

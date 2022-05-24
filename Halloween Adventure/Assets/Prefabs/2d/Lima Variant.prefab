@@ -8,9 +8,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2660427907902520973, guid: d135f12d310c00e428da32ba3283f782, type: 3}
+      propertyPath: m_Size.x
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660427907902520973, guid: d135f12d310c00e428da32ba3283f782, type: 3}
+      propertyPath: m_Size.y
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660427907902520973, guid: d135f12d310c00e428da32ba3283f782, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4176791522101867698, guid: 804f4bcfb8ba23e428096ff6171bf017, type: 3}
+      objectReference: {fileID: 8857965477116570888, guid: b4242723099914e4daa6101bb124b690, type: 3}
+    - target: {fileID: 2660427907902520973, guid: d135f12d310c00e428da32ba3283f782, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2660427907902521072, guid: d135f12d310c00e428da32ba3283f782, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -60,8 +72,20 @@ PrefabInstance:
       value: Lima Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2660427907902521074, guid: d135f12d310c00e428da32ba3283f782, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660427907902521074, guid: d135f12d310c00e428da32ba3283f782, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660427907902521074, guid: d135f12d310c00e428da32ba3283f782, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660427907902521074, guid: d135f12d310c00e428da32ba3283f782, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.97
+      value: 1.43
       objectReference: {fileID: 0}
     - target: {fileID: 2660427907902521075, guid: d135f12d310c00e428da32ba3283f782, type: 3}
       propertyPath: candyType

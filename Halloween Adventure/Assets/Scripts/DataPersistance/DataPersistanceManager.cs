@@ -116,6 +116,22 @@ public class DataPersistanceManager : MonoBehaviour
         }
     }
 
+    /*public float loadVNData(int data){
+        if(data == 1){
+            try
+            {
+                return gameData.textSpeed;
+            }
+            catch (System.NullReferenceException e)
+            {
+                Debug.LogError("GameData textspeed null reference! Setting default.\n" + e);
+                return 0.05f;
+            }
+        }
+        else
+            return -1;
+    }*/
+
     private void OnApplicationQuit() {
         SaveGame();
     }
