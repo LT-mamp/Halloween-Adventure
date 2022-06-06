@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour, IDataPersistance
     //public GameObject endTrigger;
     //public bool endEjeX = true;
 
+    public bool gamePaused = false;
+
     [Header("LevelLoader")]
     public LevelLoader levelLoader;
 
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour, IDataPersistance
     [HideInInspector] public int Bpoints;
     [HideInInspector] public int Cpoints;
     [HideInInspector] public int Dpoints;
+    int stage = 0;
+    bool end = false;
 
     [Header("World elements")]
     public bool isPlatformLevel = true;
@@ -44,6 +48,10 @@ public class GameManager : MonoBehaviour, IDataPersistance
     [SerializeField] GameObject[] candyOnUse = new GameObject[5];
     //public TextMeshProUGUI[]  activeCandyPrototipo = new TextMeshProUGUI[5];
     //public List<Candy> activeCandy;
+    [Header("Cursor")]
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
 
 
     GameObject objetosEnPlanoX;
@@ -52,6 +60,7 @@ public class GameManager : MonoBehaviour, IDataPersistance
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
         if(isPlatformLevel){
             for (int i = 0; i < candyCount.Length; i++)
             {
@@ -63,30 +72,35 @@ public class GameManager : MonoBehaviour, IDataPersistance
     public void FinishLevel(int nextLevel){
         if(nextLevel == -2){
             string nextName = "";
-            if(scene3 != ""){
+            if(scene3 != "" && end){
                 nextName = scene3;
             }
             else{
-                int totalPoints = Apoints+Bpoints+Cpoints+Dpoints;
-                if(totalPoints <= 5){
+                stage++;
+                if(stage==1){
                     //primer bifur
                     if(Apoints > Dpoints){
                         nextName = scene1;
                     }else{
                         nextName = scene2;
+                        end = true;
                     }
-                }else if(totalPoints == 6){
-                    if(Apoints-Dpoints > Cpoints){
+                }else if(stage==2){
+                    if(Apoints-Dpoints+Bpoints-Cpoints > Cpoints){
                         nextName = scene1;
                     }else{
                         nextName = scene2;
                     }
-                }else if(totalPoints == 7){
-                    if(Apoints-Dpoints-Cpoints > Bpoints){
+                }else if(stage==3){
+                    if(Apoints > Bpoints){
                         nextName = scene1;
+                    }else if(Bpoints > Cpoints){
+                        nextName = scene2;
                     }else{
-                        nextLevel = -1;
+                        nextName = scene3;
                     }
+                }else {
+                    Debug.Log("Stage : " + stage);
                 }
             }
             
@@ -166,6 +180,10 @@ public class GameManager : MonoBehaviour, IDataPersistance
             return;
         }
         isMechanicActive[mechanik] = activate;
+    }
+
+    public void ResumeGame(bool pause){
+        gamePaused = pause;
     }
 
     public void printPoints(){

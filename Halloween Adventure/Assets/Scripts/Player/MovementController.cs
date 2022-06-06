@@ -15,6 +15,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     public Transform startPoint;
     [SerializeField] Transform groundPoint;
     [SerializeField] SpriteRenderer sprite;
+    //public Animator animator;
 
     //Input
     //PlayerInput playerInput;
@@ -78,7 +79,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     GameObject createdObject = null;
 
     [Header("Invert")]
-    public Transform temporalGroundPoint;
+    public Transform[] temporalGroundPoint;
     bool isInvertGravityPressed = false;
     bool isInverted = false;
 
@@ -142,7 +143,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
             createPlatform();*/
 
     public void onMovementInput(InputAction.CallbackContext context){
-        if(context.started || context.canceled){
+        if(context.started || context.canceled && !gm.gamePaused){
             currentMovementInput = context.ReadValue<Vector2>();
             currentMovement.x = currentMovementInput.x;
             currentMovement.z = currentMovementInput.y;
@@ -150,22 +151,22 @@ public class MovementController : MonoBehaviour, IDataPersistance
         
         isMovementPressed = currentMovement.x != 0 || currentMovement.y != 0;
 
-        if(currentMovement.x > 0){
+        if(currentMovement.x > 0 && !gm.gamePaused){
             directionOfMovement = 1;
-        }else if(currentMovement.x < 0){
+        }else if(currentMovement.x < 0 && !gm.gamePaused){
             directionOfMovement = -1;
         }
         
     }
 
-    public void onJump(InputAction.CallbackContext context){
-        if(context.started || context.canceled){
+    public void onJump(InputAction.CallbackContext context ){
+        if(context.started || context.canceled && !gm.gamePaused){
             isJumpPressed = context.ReadValueAsButton();
         }
     }
 
     public void onRotateWorld(InputAction.CallbackContext context){
-        if(gm.isMechanicActive[0] && (context.started || context.canceled)){
+        if(gm.isMechanicActive[0] && (context.started || context.canceled) && !gm.gamePaused){
             isRotatingPressed = context.ReadValueAsButton(); 
             Debug.Log("ROTANDO " + isRotatingPressed);
         }else if(context.canceled){
@@ -174,7 +175,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     }
 
     public void onCreatePlatform(InputAction.CallbackContext context){
-        if(gm.isMechanicActive[1] && (context.started || context.canceled)){
+        if(gm.isMechanicActive[1] && (context.started || context.canceled) && !gm.gamePaused){
             isCreatePlatformPressed = context.ReadValueAsButton();
             //Debug.Log("MAGIC = " + isCreatePlatformPressed);
             if(isCreatePlatformPressed){
@@ -187,7 +188,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
     }
 
     public void onInvertGravity(InputAction.CallbackContext context){
-        if(gm.isMechanicActive[2] && (context.started || context.canceled)){
+        if(gm.isMechanicActive[2] && (context.started || context.canceled) && !gm.gamePaused){
             isInvertGravityPressed = context.ReadValueAsButton();
             //Debug.Log("I= " + isInvertGravityPressed);
             if(isInvertGravityPressed){
@@ -197,14 +198,14 @@ public class MovementController : MonoBehaviour, IDataPersistance
     }
 
     public void onSwing(InputAction.CallbackContext context){
-        if(gm.isMechanicActive[3] && (context.started || context.canceled)){
+        if(gm.isMechanicActive[3] && (context.started || context.canceled) && !gm.gamePaused){
             isSwingPressed = context.ReadValueAsButton();
             //Debug.Log("SWING = " + isSwingPressed);
         }
     }
 
     public void onPush(InputAction.CallbackContext context){
-        if(gm.isMechanicActive[4] && (context.started || context.canceled)){
+        if(gm.isMechanicActive[4] && (context.started || context.canceled) && !gm.gamePaused){
             isPushPressed = context.ReadValueAsButton();
             //Debug.Log("PUSHING = " + isPushPressed);
         }
@@ -240,48 +241,50 @@ public class MovementController : MonoBehaviour, IDataPersistance
     void Update()
     {
 
-        if(isRotatingPressed && !isRotating){
-            isRotating = true;
-            StartCoroutine("socorro");
-            //gm.endTrigger.SetActive(false);
-            //set active esta chuche en la UI
-            gm.SetCandyOnUse(Candy.Soul, true);
-            //gm.activeCandyPrototipo[(int)Candy.Soul].text += "X";
-            if(isLookingToZ){
-                gm.ActivarElementosEnPlano(2, true);
-            }else{
-                gm.ActivarElementosEnPlano(1, true);
+        if(!gm.gamePaused){ 
+            if(isRotatingPressed && !isRotating){
+                isRotating = true;
+                StartCoroutine("socorro");
+                //gm.endTrigger.SetActive(false);
+                //set active esta chuche en la UI
+                gm.SetCandyOnUse(Candy.Soul, true);
+                //gm.activeCandyPrototipo[(int)Candy.Soul].text += "X";
+                if(isLookingToZ){
+                    gm.ActivarElementosEnPlano(2, true);
+                }else{
+                    gm.ActivarElementosEnPlano(1, true);
+                }
+                rotateWorld();
+            }else if(isRotating){
+                rotateWorld();
             }
-            rotateWorld();
-        }else if(isRotating){
-            rotateWorld();
-        }
-        else if(isSwingPressed && swingActive){
-            isSwinging = true;
-            //set active esta chuche en la UI
-            gm.SetCandyOnUse(Candy.Lima, true);
-            swing();
-        }else if(isSwinging){
-            swing();
-        }else if(isPushPressed){
-            pushEnabled = true;
-            //set active esta chuche en la UI
-            gm.SetCandyOnUse(Candy.Tibo, true);
-            pushUpdateEnabled();
-        }else if(count > 0 && pushEnabled){
-            count -= Time.deltaTime;
-        }else if(pushEnabled){
-            count = 10f;
-            pushEnabled = false;
-            //set active esta chuche en la UI
-            gm.SetCandyOnUse(Candy.Tibo, false);
-            pushUpdateEnabled();
-        }
+            else if(isSwingPressed && swingActive){
+                isSwinging = true;
+                //set active esta chuche en la UI
+                gm.SetCandyOnUse(Candy.Lima, true);
+                swing();
+            }else if(isSwinging){
+                swing();
+            }else if(isPushPressed){
+                pushEnabled = true;
+                //set active esta chuche en la UI
+                gm.SetCandyOnUse(Candy.Tibo, true);
+                pushUpdateEnabled();
+            }else if(count > 0 && pushEnabled){
+                count -= Time.deltaTime;
+            }else if(pushEnabled){
+                count = 10f;
+                pushEnabled = false;
+                //set active esta chuche en la UI
+                gm.SetCandyOnUse(Candy.Tibo, false);
+                pushUpdateEnabled();
+            }
 
-        moveCharacter();
-        if(isInverted) applyGravity(-1, Igravity, temporalGroundPoint);
-        else applyGravity(1, gravity, groundPoint);
-        jump();
+            moveCharacter();
+            if(isInverted) applyGravity(-1, Igravity, temporalGroundPoint[0]);
+            else applyGravity(1, gravity, groundPoint);
+            jump();
+        }
     }
 
     void applyGravity(int invert, float g, Transform gp){
@@ -331,6 +334,16 @@ public class MovementController : MonoBehaviour, IDataPersistance
         
         //characterController.Move(newMovement * Time.deltaTime);
         rb.velocity = new Vector2(newMovement.x, newMovement.y);
+        /*if(rb.velocity == Vector2.zero) {
+            if(animator.GetBool("isWalking")){
+                animator.SetTrigger("stop");
+                animator.SetBool("isWalking", false);
+            }
+        }
+        else if(!animator.GetBool("isWalking")) {
+            animator.SetTrigger("walk");
+            animator.SetBool("isWalking", true);
+        }*/
         //Debug.Log(rb.velocity);
     }
 
@@ -339,7 +352,7 @@ public class MovementController : MonoBehaviour, IDataPersistance
         float jumpVel = 0f;
 
         if(isInverted){ 
-            grounded = Physics2D.OverlapCircle(temporalGroundPoint.position, .1f, ground);
+            grounded = Physics2D.OverlapCircle(temporalGroundPoint[0].position, .1f, ground) || Physics2D.OverlapCircle(temporalGroundPoint[1].position, .1f, ground) || Physics2D.OverlapCircle(temporalGroundPoint[3].position, .1f, ground);
             jumpVel = -initialJumpVelocity;
         }
         else{

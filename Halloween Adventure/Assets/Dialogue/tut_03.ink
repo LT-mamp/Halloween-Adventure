@@ -1,4 +1,4 @@
-You got the purple-lollipop!
+You got the purple-lollipop! #Image:None
 
 Mars can create magic boxes with he magic. 
 But only one at a time!

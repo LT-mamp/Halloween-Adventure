@@ -3661,6 +3661,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &434327480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 434327481}
+  m_Layer: 0
+  m_Name: groundPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &434327481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434327480}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.328, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1486337519510980609}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &434650137
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,6 +5355,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9198968545944677672, guid: a4143e36a6d544c4b974c4e3092648f8, type: 3}
   m_PrefabInstance: {fileID: 691713506}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &697101202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 697101203}
+  m_Layer: 0
+  m_Name: groundPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &697101203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697101202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.321, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1486337519510980609}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &703419149
 GameObject:
   m_ObjectHideFlags: 0
@@ -9008,7 +9068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910919787556868279, guid: 257dfec9685be31498bf9f81f65a283b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 8.8125
       objectReference: {fileID: 0}
     - target: {fileID: 2910919787556868279, guid: 257dfec9685be31498bf9f81f65a283b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13613,11 +13673,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888107696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6425, y: -6.6352, z: 0}
-  m_LocalScale: {x: 12.625758, y: 1.8054856, z: 1}
+  m_LocalPosition: {x: 0, y: -9.3513, z: -2.6209002}
+  m_LocalScale: {x: 13.433265, y: 0.6785015, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1486337519067465448}
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1891760906
 GameObject:
@@ -14589,6 +14649,38 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 2060720679}
+    - target: {fileID: 3313368942350205691, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313368943529854857, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313368943529854857, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313368943529854857, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1217459748}
+    - target: {fileID: 3313368943529854857, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313368943529854857, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313368943529854857, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313368943529854857, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5495447603814034902, guid: ee144eadf0bbcb14a92d165caddbbba7, type: 3}
       propertyPath: m_Name
       value: Canvas (1)
@@ -15842,6 +15934,7 @@ Transform:
   - {fileID: 1393336473}
   - {fileID: 1480214017}
   - {fileID: 809114052}
+  - {fileID: 1888107698}
   m_Father: {fileID: 1604506427}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -16103,6 +16196,8 @@ Transform:
   - {fileID: 1486337518401529185}
   - {fileID: 1486337518321783768}
   - {fileID: 1486337519829680721}
+  - {fileID: 434327481}
+  - {fileID: 697101203}
   m_Father: {fileID: 1486337518934348153}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16296,7 +16391,10 @@ MonoBehaviour:
   rotationSpeed: 25
   originOfCreation: {fileID: 1486337518321783768}
   objectPrefab: {fileID: 595247750776095126, guid: 3dee2345a70d6aa4fb1322f42278c8c7, type: 3}
-  temporalGroundPoint: {fileID: 0}
+  temporalGroundPoint:
+  - {fileID: 1486337519829680721}
+  - {fileID: 434327481}
+  - {fileID: 697101203}
   pusheable:
   - {fileID: 0}
 --- !u!1 &1486337519829680720

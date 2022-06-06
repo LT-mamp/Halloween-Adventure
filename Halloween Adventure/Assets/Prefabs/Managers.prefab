@@ -94,11 +94,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dpm: {fileID: 3795295360565488121}
   actorImage: {fileID: 0}
+  imageAnim: {fileID: 0}
   messageText: {fileID: 0}
   backgoundBox: {fileID: 0}
   holeScreenNextButton: {fileID: 0}
   dialogModeText: {fileID: 0}
+  actorsImages: {fileID: 0}
   choices: []
+  choicesBox: {fileID: 0}
+  bgs: []
   animator: {fileID: 0}
   textSpeed: 0.05
   gm: {fileID: 0}
@@ -226,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ff6980e31d3f243a3a6a2553eb7c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamePaused: 0
   levelLoader: {fileID: 0}
   scene1: 
   scene2: 
@@ -255,6 +260,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cursorTexture: {fileID: 2800000, guid: 7d8de81c05723d743901c300cf42dcbd, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!114 &1827321797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dpm: {fileID: 3795295360565488121}
   audioManager: {fileID: 1384053168}
+  dialogManager: {fileID: 0}
   VolumeUITex:
   - {fileID: 0}
   - {fileID: 0}

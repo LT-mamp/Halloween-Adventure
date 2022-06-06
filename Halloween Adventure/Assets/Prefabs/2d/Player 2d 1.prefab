@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 2005144234627195539}
   - component: {fileID: 2005144234627195538}
   - component: {fileID: 2005144234627195536}
+  - component: {fileID: 8745338091276734602}
   m_Layer: 0
   m_Name: Player 2d 1
   m_TagString: Player
@@ -243,6 +244,7 @@ MonoBehaviour:
   startPoint: {fileID: 0}
   groundPoint: {fileID: 2005144235415791837}
   sprite: {fileID: 2005144233580777456}
+  animator: {fileID: 8745338091276734602}
   initialJumpVelocity: 10
   maxJumpHeight: 3
   maxJumpTime: 0.5
@@ -416,6 +418,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &8745338091276734602
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005144234627195532}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 797ae1c55c335d946bf74aff6a197d4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2005144235415791836
 GameObject:
   m_ObjectHideFlags: 0

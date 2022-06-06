@@ -15,6 +15,7 @@ public class GameTrigger : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             if(this.tag == "Finish"){
                 inside = true;
+                
                 StartCoroutine(endLevel());
             }
             else if(this.tag == "mechanicAtivator"){

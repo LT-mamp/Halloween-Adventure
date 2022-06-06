@@ -19,10 +19,12 @@ public class DialogManager1 : MonoBehaviour
 
     [Header("Dialogue UI")]
     [SerializeField] Image actorImage;
+    [SerializeField] Animator imageAnim;
     [SerializeField] TextMeshProUGUI messageText;
     [SerializeField] RectTransform backgoundBox;
     [SerializeField] GameObject holeScreenNextButton;
     [SerializeField] TextMeshProUGUI dialogModeText;
+    [SerializeField] DialogActors actorsImages;
 
     [Header("Choices UI")]
     [SerializeField] GameObject[] choices;
@@ -41,6 +43,7 @@ public class DialogManager1 : MonoBehaviour
     [Header("Game Manager")]
     [SerializeField] GameManager gm;
     [SerializeField] bool bifurcation = false;
+    public string nextSceenName = "";
 
     //[Header("Story")]
     Story currentStory;
@@ -173,6 +176,7 @@ public class DialogManager1 : MonoBehaviour
         }
     }
 
+    
     IEnumerator AutoNextMessage(){
         yield return new WaitForSeconds(1f);
         NextMessage();
@@ -208,7 +212,8 @@ public class DialogManager1 : MonoBehaviour
                             actorImage.enabled = false;
                         }else{
                             actorImage.enabled = true;
-                            //actorImage.sprite = tagValue;
+                            actorImage.sprite = actorsImages.GetActorImage(tagValue);
+                            imageAnim.SetTrigger("imageIn");
                         }
                         break;
                     case Sound_To_Play:
@@ -225,8 +230,8 @@ public class DialogManager1 : MonoBehaviour
                         actualBg++;
                         bgs[actualBg].SetActive(true);
                         break;
-                    case "path":
-                        Debug.Log("Path=" + tagValue);
+                    case "choice":
+                        Debug.Log("Choice=" + tagValue);
                         switch(tagValue){
                             case "A":
                                 gm.Apoints += 1;
@@ -252,7 +257,7 @@ public class DialogManager1 : MonoBehaviour
             }
             
         }
-        actorImage.enabled = false;
+        //actorImage.enabled = false;
     }
 
     public void NextMessage(){
@@ -396,6 +401,8 @@ public class DialogManager1 : MonoBehaviour
         if(!gm.isPlatformLevel){
             //gm.SetNextLevelIndex(-1);
             if(bifurcation) gm.SetNextLevelIndex(-2);
+
+            if(nextSceenName != "") gm.levelLoader.sceneName = nextSceenName;
 
             gm.levelLoader.LoadNextLevel();
         }

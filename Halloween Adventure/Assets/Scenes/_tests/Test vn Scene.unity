@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &123158451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7332996922150412992, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+  m_PrefabInstance: {fileID: 2169444472681816389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2169444472681816389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +135,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2169444472825700781, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+      propertyPath: bgs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169444472825700781, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+      propertyPath: bgs.Array.data[1]
+      value: 
+      objectReference: {fileID: 123158451}
+    - target: {fileID: 2917186342374849037, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3690406011779013708, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -177,6 +194,26 @@ PrefabInstance:
     - target: {fileID: 3902521496272206253, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
       propertyPath: m_Name
       value: vn_base
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810489787949611310, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810489787949611310, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810489787949611310, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7332996922440974383, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+      propertyPath: dialogJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: 9f9eeed55ea590a40b8eed9fde7edf50, type: 3}
+    - target: {fileID: 7714698221759222793, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
