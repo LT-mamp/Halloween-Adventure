@@ -508,7 +508,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2169444472825700781, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
       propertyPath: nextSceenName
-      value: edFeria
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2169444472825700781, guid: c4bede52567cee14ebd892d390f2e402, type: 3}
       propertyPath: bgs.Array.size

@@ -112,15 +112,20 @@ public class GameConfigManager : MonoBehaviour, IDataPersistance
     }
 
     public void LoadData(GameData data){
-        textSpeedScrollbar.value = data.textSpeed;
-        SetNewTextSpeed();
-        //idioma = data.idioma;
+        if(!this.gameObject.GetComponent<GameManager>().isPlatformLevel){
+            textSpeedScrollbar.value = data.textSpeed;
+            SetNewTextSpeed();
+            //idioma = data.idioma;
+        }
         
     }
 
     public void SaveData(ref GameData data){
-        data.textSpeed = textSpeedScrollbar.value;
-        //data.idioma = idioma;
+        if(!this.gameObject.GetComponent<GameManager>().isPlatformLevel)
+        {
+            data.textSpeed = textSpeedScrollbar.value;
+            //data.idioma = idioma;
+        }
     }
 
 }
