@@ -948,6 +948,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 128803765577012965, guid: 012c164c6589e4740b8c517f51e0d6bf, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 202980117}
     - target: {fileID: 128803765577012966, guid: 012c164c6589e4740b8c517f51e0d6bf, type: 3}
       propertyPath: m_SortingOrder
       value: 3
@@ -1156,6 +1160,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6334076283398563434, guid: 012c164c6589e4740b8c517f51e0d6bf, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 202980117}
     - target: {fileID: 6459574260630168968, guid: 012c164c6589e4740b8c517f51e0d6bf, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1184,6 +1192,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 6670897378829728986, guid: 012c164c6589e4740b8c517f51e0d6bf, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 202980117}
     - target: {fileID: 6670897378829728991, guid: 012c164c6589e4740b8c517f51e0d6bf, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -1432,6 +1444,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 8420105272207581992, guid: 012c164c6589e4740b8c517f51e0d6bf, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 202980117}
     - target: {fileID: 8420105272207581997, guid: 012c164c6589e4740b8c517f51e0d6bf, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1

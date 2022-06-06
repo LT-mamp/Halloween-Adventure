@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameConfigManager : MonoBehaviour
+public class GameConfigManager : MonoBehaviour, IDataPersistance
 {
     public DataPersistanceManager dpm;
     public AudioManager audioManager;
@@ -17,10 +17,13 @@ public class GameConfigManager : MonoBehaviour
     [Header("Text")]
     [SerializeField] TextMeshProUGUI textSpeedUIText;
     [SerializeField] Scrollbar textSpeedScrollbar;
+    float textSpeed;
+
 
     [Header("Idioma")]
     [SerializeField] Toggle toggleEsp;
     [SerializeField] Toggle toggleEng;
+    string idioma;
 
     //float volumeValue;
     //float textSpeed;
@@ -72,9 +75,8 @@ public class GameConfigManager : MonoBehaviour
         }
 
         //Debug.Log("New text speed = " + newSpeed);
-        dialogManager.ChangeTextSpeed(newSpeed);
-
-        dpm.SaveSpecificData(Data.TEXT_SPEED, newSpeed);
+        //dialogManager.ChangeTextSpeed(newSpeed);
+        dpm.SaveGame();
     }
 
     public void SetNewIdioma(string idiomaID){
@@ -107,6 +109,18 @@ public class GameConfigManager : MonoBehaviour
             VolumeUITex[settingID].text = ((int) (100 * volume)).ToString() + "%";
             VolumeScrollbar[settingID].value = volume;
         }
+    }
+
+    public void LoadData(GameData data){
+        textSpeedScrollbar.value = data.textSpeed;
+        SetNewTextSpeed();
+        //idioma = data.idioma;
+        
+    }
+
+    public void SaveData(ref GameData data){
+        data.textSpeed = textSpeedScrollbar.value;
+        //data.idioma = idioma;
     }
 
 }

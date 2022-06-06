@@ -11,7 +11,7 @@ public enum DialogMode{
     NO_TYPPING
 }
 
-public class DialogManager1 : MonoBehaviour
+public class DialogManager1 : MonoBehaviour, IDataPersistance
 {
     private static DialogManager1 instance;
 
@@ -409,7 +409,21 @@ public class DialogManager1 : MonoBehaviour
         
     }
 
-    //si el texto se corresponde con un comando, hacer un switch y llamar a la función correspondiente.
-    //arreglar el bug de hacer click muy rápido y se bugea el texto
+    
+    public void LoadData(GameData data){
+        setSpeed(data.textSpeed);
+    }
+
+    public void SaveData(ref GameData data){
+        if(textSpeed == .25f){
+            data.textSpeed = 0;
+        }else if(textSpeed == .05f){
+            data.textSpeed = 33;
+        }else if(textSpeed == .001f){
+            data.textSpeed = 66;
+        }else{
+            data.textSpeed = 100;
+        } 
+    }
 
 }

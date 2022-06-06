@@ -6086,7 +6086,7 @@ PrefabInstance:
     - target: {fileID: 1827321797, guid: e2db0bc6d49f2204b8ef3fd04ad03aba, type: 3}
       propertyPath: textSpeedUIText
       value: 
-      objectReference: {fileID: 1305681559}
+      objectReference: {fileID: 1558394769}
     - target: {fileID: 1827321797, guid: e2db0bc6d49f2204b8ef3fd04ad03aba, type: 3}
       propertyPath: textSpeedScrollbar
       value: 
